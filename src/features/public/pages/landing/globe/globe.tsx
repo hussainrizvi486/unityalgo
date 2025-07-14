@@ -60,13 +60,13 @@ interface WorldProps {
     data: Position[];
 }
 
-let numbersOfRings = [0];
+// let numbersOfRings = [0];
 
 export function Globe({ globeConfig, data }: WorldProps) {
     console.log(countries);
 
     const globeRef = useRef<ThreeGlobe | null>(null);
-    const groupRef = useRef();
+    const groupRef = useRef(null);
     const [isInitialized, setIsInitialized] = useState(false);
     const defaultProps = {
         pointSize: 1,
@@ -124,7 +124,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
         let points = [];
         for (let i = 0; i < arcs.length; i++) {
             const arc = arcs[i];
-            const rgb = hexToRgb(arc.color) as { r: number; g: number; b: number };
+            // const rgb = hexToRgb(arc.color) as { r: number; g: number; b: number };
             points.push({
                 size: defaultProps.pointSize,
                 order: arc.order,
@@ -217,7 +217,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
             );
 
             const ringsData = data
-                .filter((d, i) => newNumbersOfRings.includes(i))
+                .filter((_, i) => newNumbersOfRings.includes(i))
                 .map((d) => ({
                     lat: d.startLat,
                     lng: d.startLng,
@@ -283,21 +283,21 @@ export function World(props: WorldProps) {
     );
 }
 
-function hexToRgb(hex: string) {
-    const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-    hex = hex.replace(shorthandRegex, function (m, r, g, b) {
-        return r + r + g + g + b + b;
-    });
+// function hexToRgb(hex: string) {
+//     const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+//     hex = hex.replace(shorthandRegex, function (_, r, g, b) {
+//         return r + r + g + g + b + b;
+//     });
 
-    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-    return result
-        ? {
-            r: parseInt(result[1], 16),
-            g: parseInt(result[2], 16),
-            b: parseInt(result[3], 16),
-        }
-        : null;
-}
+//     const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+//     return result
+//         ? {
+//             r: parseInt(result[1], 16),
+//             g: parseInt(result[2], 16),
+//             b: parseInt(result[3], 16),
+//         }
+//         : null;
+// }
 
 function genRandomNumbers(min: number, max: number, count: number) {
     const arr = [];
