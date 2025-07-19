@@ -11,65 +11,137 @@ export const ContactSection = () => {
     }
 
     return (
-        <div className="py-12 mx-auto max-w-6xl px-2" id="contact-section">
-            <div className="md:flex md:gap-4 ">
+        <div className="py-40 mx-auto max-w-6xl px-6" id="contact-section">
+            <div className="md:flex md:gap-12 md:items-start">
 
-                <div className="mb-6 md:m-0 md:basis-[50%]">
-                    <div className="mb-6">
-                        <div className="text-2xl font-bold mb-4">Collaborate with us to build greatness.</div>
-                        <div className="text-sm" >We believe in turning ideas into reality and we're ready to join your journey. Reach out to us and let's start discussing your project.</div>
+                <div className="mb-12 md:mb-0 md:basis-[45%]">
+                    <div className="mb-8">
+                        <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                            Collaborate with us to build greatness.
+                        </h2>
+                        <p className="text-lg text-gray-300 leading-relaxed">
+                            We believe in turning ideas into reality and we're ready to join your journey. Reach out to us and let's start discussing your project.
+                        </p>
                     </div>
-                    <div>
-                        <div className="flex items-center gap-2 mb-4">
-                            <MailIcon className="size-5" />
-                            <div className="text-sm">
-
-                                <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
+                    
+                    <div className="space-y-6">
+                        <div className="flex items-center gap-4 group">
+                            <div className="p-3 bg-white/10 backdrop-blur-sm rounded-xl group-hover:bg-white/20 transition-all duration-300 group-hover:scale-110">
+                                <MailIcon className="size-6 text-white" />
+                            </div>
+                            <div>
+                                <p className="text-sm text-gray-400 mb-1">Email us at</p>
+                                <a 
+                                    href={`mailto:${contactEmail}`} 
+                                    className="text-lg text-white hover:text-blue-400 transition-colors duration-300 font-medium"
+                                >
+                                    {contactEmail}
+                                </a>
                             </div>
                         </div>
 
-                        <div className="flex items-center gap-2 mb-4">
-                            <PhoneIcon className="size-5" />
-                            <div className="text-sm">
-                                <a href={`tel:${contactPhone}`} className="text-sm">{contactPhone}</a>
+                        <div className="flex items-center gap-4 group">
+                            <div className="p-3 bg-white/10 backdrop-blur-sm rounded-xl group-hover:bg-white/20 transition-all duration-300 group-hover:scale-110">
+                                <PhoneIcon className="size-6 text-white" />
+                            </div>
+                            <div>
+                                <p className="text-sm text-gray-400 mb-1">Call us at</p>
+                                <a 
+                                    href={`tel:${contactPhone}`} 
+                                    className="text-lg text-white hover:text-blue-400 transition-colors duration-300 font-medium"
+                                >
+                                    {contactPhone}
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div className="md:flex-auto">
-
-                    <form className="" onSubmit={handleSubmit}>
-                        <div className="md:flex md:gap-2 mb-4">
-                            <div className="flex flex-col md:basis-full">
-                                <label htmlFor="first_name" className="text-sm mb-2">First Name</label>
-                                <input type="text" id="first_name" placeholder="Enter here" className="text-sm border  placeholder-white border-white p-2 rounded-md focus-within:ring-2 focus-within:ring-blue-400 outline-none" />
+                    <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 shadow-2xl">
+                        <h3 className="text-2xl font-bold text-white mb-6">Send us a message</h3>
+                        
+                        <form className="space-y-6" onSubmit={handleSubmit}>
+                            <div className="md:flex md:gap-4">
+                                <div className="flex flex-col md:flex-1 mb-6 md:mb-0">
+                                    <label htmlFor="first_name" className="text-sm font-medium text-gray-300 mb-2">
+                                        First Name *
+                                    </label>
+                                    <input 
+                                        type="text" 
+                                        id="first_name" 
+                                        name="first_name"
+                                        placeholder="John" 
+                                        required
+                                        className="text-sm bg-white/10 border border-white/20 text-white placeholder-gray-400 p-3 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent outline-none transition-all duration-200 hover:bg-white/15" 
+                                    />
+                                </div>
+                                <div className="flex flex-col md:flex-1">
+                                    <label htmlFor="last_name" className="text-sm font-medium text-gray-300 mb-2">
+                                        Last Name *
+                                    </label>
+                                    <input 
+                                        type="text" 
+                                        id="last_name" 
+                                        name="last_name"
+                                        placeholder="Doe" 
+                                        required
+                                        className="text-sm bg-white/10 border border-white/20 text-white placeholder-gray-400 p-3 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent outline-none transition-all duration-200 hover:bg-white/15" 
+                                    />
+                                </div>
                             </div>
-                            <div className="flex flex-col md:basis-full">
-                                <label htmlFor="last_name" className="text-sm mb-2">Last Name</label>
-                                <input type="text" id="last_name" placeholder="Enter here" className="text-sm border  placeholder-white border-white p-2 rounded-md focus-within:ring-2 focus-within:ring-blue-400 outline-none " />
+
+                            <div className="flex flex-col">
+                                <label htmlFor="email" className="text-sm font-medium text-gray-300 mb-2">
+                                    Email Address *
+                                </label>
+                                <input 
+                                    type="email" 
+                                    id="email" 
+                                    name="email"
+                                    placeholder="john.doe@example.com" 
+                                    required
+                                    className="text-sm bg-white/10 border border-white/20 text-white placeholder-gray-400 p-3 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent outline-none transition-all duration-200 hover:bg-white/15" 
+                                />
                             </div>
-                        </div>
 
-                        <div className="flex flex-col mb-4">
-                            <label htmlFor="email" className="text-sm mb-2">Email</label>
-                            <input type="email" id="email" placeholder="example@domain.com" className="text-sm border placeholder-white border-white p-2 rounded-md focus-within:ring-2 focus-within:ring-blue-400 outline-none" />
-                        </div>
+                            <div className="flex flex-col">
+                                <label htmlFor="phone" className="text-sm font-medium text-gray-300 mb-2">
+                                    Phone Number
+                                </label>
+                                <input 
+                                    type="tel" 
+                                    id="phone" 
+                                    name="phone"
+                                    placeholder="+1 (555) 123-4567"
+                                    className="text-sm bg-white/10 border border-white/20 text-white placeholder-gray-400 p-3 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent outline-none transition-all duration-200 hover:bg-white/15" 
+                                />
+                            </div>
 
-                        <div className="flex flex-col mb-4">
-                            <label htmlFor="phone" className="text-sm mb-2">Phone</label>
-                            <input type="text" id="phone" className="text-sm border border-white p-2 rounded-md focus-within:ring-2 focus-within:ring-blue-400 outline-none" />
-                        </div>
+                            <div className="flex flex-col">
+                                <label htmlFor="message" className="text-sm font-medium text-gray-300 mb-2">
+                                    Message *
+                                </label>
+                                <textarea 
+                                    id="message" 
+                                    name="message"
+                                    rows={5} 
+                                    required 
+                                    placeholder="Tell us about your project and how we can help you..."
+                                    className="text-sm bg-white/10 border border-white/20 text-white placeholder-gray-400 p-3 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-transparent outline-none resize-none transition-all duration-200 hover:bg-white/15" 
+                                />
+                            </div>
 
-                        <div className="flex flex-col mb-4">
-                            <label htmlFor="message" className="text-sm mb-2">Message</label>
-                            <textarea id="message" rows={4} required placeholder="Enter your message here..." className="text-sm border border-white p-2 rounded-md focus-within:ring-2 focus-within:ring-blue-400 outline-none resize-none" />
-                        </div>
-
-                        <div className="flex mt-6">
-                            <button type="submit" className="w-full text-sm bg-white text-primary py-2 px-4 rounded cursor-pointer font-semibold">Send Request</button>
-                        </div>
-                    </form>
+                            <div className="pt-2">
+                                <button 
+                                    type="submit" 
+                                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-transparent outline-none"
+                                >
+                                    Send Message
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
 
