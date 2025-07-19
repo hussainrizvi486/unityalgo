@@ -1,0 +1,1 @@
+import{j as r}from"./index-D_u1RfhF.js";import{H as e}from"./header-CW4HY5uj.js";const i=()=>r.jsxs("div",{className:"bg-primary text-primary-foreground min-h-screen",children:[r.jsx(e,{}),r.jsx("div",{className:"mx-auto max-w-6xl",children:r.jsx("div",{className:"text-2xl",children:"Privacy policy"})})]});export{i as default};
