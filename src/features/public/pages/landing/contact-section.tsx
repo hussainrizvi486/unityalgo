@@ -1,14 +1,59 @@
+import React, { useState } from "react";
 import { Mail as MailIcon, Phone as PhoneIcon } from "lucide-react";
 import { contactEmail, contactPhone } from "../../../../global";
+import { ThankYouModal } from "../../../../components";
 
 export const ContactSection = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const handleSubmit = (event: React.FormEvent) => {
-        event.preventDefault();
-        const form = new FormData(event.target as HTMLFormElement);
-        const data = Object.fromEntries(form.entries());
-        console.log(data)
-    }
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+
+        const form = e.currentTarget;
+        const formData = new FormData(form);
+        
+        try {
+            const res = await fetch("https://formsubmit.co/ajax/mohamedalzafar@gmail.com", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    first_name: formData.get('first_name'),
+                    last_name: formData.get('last_name'),
+                    email: formData.get('email'),
+                    phone: formData.get('phone'),
+                    message: formData.get('message'),
+                    _captcha: false,
+                    _autoresponse: "Thank you for contacting us! We'll get back to you soon."
+                }),
+            });
+
+            if (res.ok) {
+                const result = await res.json();
+                if (result.success) {
+                    // Reset form
+                    form.reset();
+                    // Show thank you modal
+                    setIsModalOpen(true);
+                } else {
+                    alert("Something went wrong. Please try again.");
+                }
+            } else {
+                alert("Something went wrong. Please try again.");
+            }
+        } catch (err) {
+            console.error("Error submitting form:", err);
+            alert("An error occurred while sending your message. Please try again.");
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
+
 
     return (
         <div className="py-40 mx-auto max-w-6xl px-6" id="contact-section">
@@ -135,17 +180,23 @@ export const ContactSection = () => {
                             <div className="pt-2">
                                 <button 
                                     type="submit" 
-                                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-transparent outline-none"
+                                    disabled={isSubmitting}
+                                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 disabled:from-gray-600 disabled:to-gray-700 disabled:cursor-not-allowed text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-transparent outline-none"
                                 >
-                                    Send Message
+                                    {isSubmitting ? "Sending..." : "Send Message"}
                                 </button>
                             </div>
                         </form>
+
                     </div>
                 </div>
             </div>
 
-
+            {/* Thank You Modal */}
+            <ThankYouModal 
+                isOpen={isModalOpen} 
+                onClose={() => setIsModalOpen(false)} 
+            />
         </div>
     )
 }
