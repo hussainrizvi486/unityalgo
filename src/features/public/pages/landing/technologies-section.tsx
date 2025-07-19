@@ -11,7 +11,7 @@ const technologies: Record<string, TechnologyType[]> = {
         },
         {
             name: "Next.js",
-            // image: "https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg",
+            image: "https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg",
         },
         {
             name: "JavaScript",
@@ -33,16 +33,17 @@ const technologies: Record<string, TechnologyType[]> = {
     ],
     "Backend": [
         {
-            name: "",
-            image: "https://static.djangoproject.com/img/logos/django-logo-positive.svg",
+            name: "Django",
+            image: "https://upload.wikimedia.org/wikipedia/commons/7/75/Django_logo.svg",
         },
 
         {
-            name: "",
+            name: "Node.js",
             image: "https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg",
         },
         {
             name: "Express.js",
+            image: "https://upload.wikimedia.org/wikipedia/commons/6/64/Expressjs.png",
         },
         {
             name: "Golang",
@@ -65,7 +66,7 @@ const technologies: Record<string, TechnologyType[]> = {
         },
         {
             name: "MySQL",
-            image: "",
+            image: "https://upload.wikimedia.org/wikipedia/commons/0/0a/MySQL_textlogo.svg",
         }
     ],
     "DevOps & Cloud": [
@@ -87,27 +88,59 @@ const technologies: Record<string, TechnologyType[]> = {
 
 export const TechnologySection = () => {
     return (
-        <div className="bg-white text-black py-12">
-            <div className="max-w-6xl mx-auto px-2">
-                <div className="text-3xl font-bold mb-6">
-                    Technologies we use
+        <div className="bg-white text-black py-20">
+            <div className="max-w-6xl mx-auto px-6">
+                <div className="text-center mb-16">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                        Technologies We Use
+                    </h2>
+                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                        We leverage cutting-edge technologies and industry-leading tools to build robust, scalable, and innovative solutions
+                    </p>
                 </div>
 
-                <div>
+                <div className="grid gap-12">
                     {Object.entries(technologies).map(([category, techs]) => (
-                        <div key={category} className="mt-8">
-                            <h3 className="text-lg font-semibold mb-4">{category}</h3>
-                            <div className="flex flex-wrap gap-4">
-
-                                {techs.map((tech) => (
-                                    <div key={tech.name} className="flex items-center gap-2">
-                                        {tech.image ? <img
-                                            src={tech.image}
-                                            alt={tech.name}
-                                            className="w-10 h-10 rounded-full object-contain"
-                                        /> : <></>}
-
-                                        <span className="text-sm font-semibold">{tech.name}</span>
+                        <div key={category} className="group">
+                            <div className="relative mb-8">
+                                <h3 className="text-2xl font-bold text-gray-900 mb-2 relative inline-block">
+                                    {category}
+                                    <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+                                </h3>
+                                {/* <div className="w-12 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600"></div> */}
+                            </div>
+                            
+                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                                {techs.map((tech, index) => (
+                                    <div 
+                                        key={tech.name || index} 
+                                        className="group/item bg-gradient-to-br from-gray-50 to-white border border-gray-100 rounded-xl p-6 hover:shadow-xl hover:border-blue-200 transition-all duration-300 hover:-translate-y-1 cursor-pointer relative overflow-hidden"
+                                    >
+                                        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-purple-600/5 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300"></div>
+                                        
+                                        <div className="relative z-10 flex flex-col items-center text-center space-y-3">
+                                            {tech.image ? (
+                                                <div className="w-12 h-12 flex items-center justify-center bg-white rounded-lg shadow-sm border border-gray-100 group-hover/item:scale-110 transition-transform duration-300">
+                                                    <img
+                                                        src={tech.image}
+                                                        alt={tech.name}
+                                                        className="w-8 h-8 object-contain"
+                                                    />
+                                                </div>
+                                            ) : (
+                                                <div className="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-gray-200 to-gray-300 rounded-lg group-hover/item:scale-110 transition-transform duration-300">
+                                                    <div className="w-6 h-6 bg-gradient-to-br from-blue-600 to-purple-600 rounded"></div>
+                                                </div>
+                                            )}
+                                            
+                                            {tech.name && (
+                                                <span className="text-sm font-semibold text-gray-800 group-hover/item:text-blue-600 transition-colors duration-300">
+                                                    {tech.name}
+                                                </span>
+                                            )}
+                                        </div>
+                                        
+                                        <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-purple-600 transform scale-x-0 group-hover/item:scale-x-100 transition-transform duration-300"></div>
                                     </div>
                                 ))}
                             </div>
