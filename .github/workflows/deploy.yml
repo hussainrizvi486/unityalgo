@@ -1,0 +1,94 @@
+name: deployment
+
+on:
+  push:
+    branches: ['master']
+
+env:
+  BUILD_PATH: './dist'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build application
+      run: npm run build
+    
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: react-build
+        path: ${{ env.BUILD_PATH }}
+        retention-days: 1
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    
+    steps:
+    - name: Download build artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: react-build
+        path: ${{ env.BUILD_PATH }}
+    
+    # Deploy to Ubuntu server via SSH
+    - name: Deploy to Ubuntu Server
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.SERVER_HOST }}
+        username: ${{ secrets.SERVER_USER }}
+        key: ${{ secrets.SERVER_SSH_KEY }}
+        port: ${{ secrets.SERVER_PORT || 22 }}
+        script: |
+        
+          cd /home/hussain/unityalgo
+          
+          # Create backup of current deployment
+          if [ -d "current" ]; then
+            sudo rm -rf backup
+            sudo mv current backup
+          fi
+
+          # Create new deployment directory
+          mkdir -p current
+    
+    - name: Copy files to server
+      uses: appleboy/scp-action@v0.1.7
+      with:
+        host: ${{ secrets.SERVER_HOST }}
+        username: ${{ secrets.SERVER_USER }}
+        key: ${{ secrets.SERVER_SSH_KEY }}
+        port: ${{ secrets.SERVER_PORT || 22 }}
+        source: "${{ env.BUILD_PATH }}/*"
+        target: "/home/hussain/unityalgo/current"
+        strip_components: 1
+
+
+
+    # Set proper permissions and restart services
+    - name: Set permissions and restart services
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.SERVER_HOST }}
+        username: ${{ secrets.SERVER_USER }}
+        password: ${{ secrets.SERVER_PASSWORD }}
+        port: ${{ secrets.SERVER_PORT || 22 }}
+        script: |
+          chmod -R 755 /home/hussain/unityalgo/current
+          echo "✅ Deployment completed successfully!"
+          echo "📁 Files deployed to: /home/hussain/unityalgo/current"
+          ls -la /home/hussain/unityalgo/current

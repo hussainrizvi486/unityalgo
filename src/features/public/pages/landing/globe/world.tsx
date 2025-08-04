@@ -1,4 +1,5 @@
 import { World as Globe } from "./globe";
+import { memo } from "react";
 
 const globeConfig = {
     pointSize: 4,
@@ -387,7 +388,7 @@ const sampleArcs = [
 ];
 
 
-export const World = () => {
+const WorldComponent = () => {
     return (
         <Globe
             data={sampleArcs}
@@ -395,3 +396,5 @@ export const World = () => {
         />
     )
 }
+
+export const World = memo(WorldComponent);
