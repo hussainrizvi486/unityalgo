@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { ArrowRight as ArrowRightIcon } from "lucide-react";
 import { Mail as MailIcon, Phone as PhoneIcon } from "lucide-react";
 import { contactEmail, contactPhone } from "../../../global";
@@ -170,12 +170,12 @@ export const Footer = () => {
                                 >
                                     About Us
                                 </a>
-                                <a 
-                                    href="#" 
+                                <NavLink 
+                                    to="/privacy-policy" 
                                     className="block text-sm text-gray-600 hover:text-blue-600 transition-all duration-200 hover:translate-x-1 hover:font-medium"
                                 >
                                     Privacy Policy
-                                </a>
+                                </NavLink>
                             </div>
                         </div>
                     </div>
@@ -203,12 +203,12 @@ export const Footer = () => {
                                 Terms of Service
                             </a>
                             <span className="text-gray-300">•</span>
-                            <a 
-                                href="#" 
+                            <NavLink 
+                                to="/privacy-policy" 
                                 className="text-sm text-gray-600 hover:text-blue-600 transition-colors duration-200"
                             >
                                 Privacy Policy
-                            </a>
+                            </NavLink>
                             <span className="text-gray-300">•</span>
                             <a 
                                 href="#" 

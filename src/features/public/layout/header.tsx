@@ -1,12 +1,15 @@
+import { useNavigate } from "react-router-dom";
 import { MenuBar } from "./menu-bar";
 
 export const Header = () => {
+    const navigate = useNavigate();
+
     const navItems = [
-        "Home",
-        "Our Products",
-        "Our Services",
-        "Contact",
-        "Cases",
+        { label: "Home", onClick: () => navigate('/') },
+        { label: "Our Products" },
+        { label: "Our Services", onClick: () => navigate('/services') },
+        { label: "Contact", onClick: () => navigate('/contact') },
+        { label: "Cases" },
     ]
     return (
         <header className="">
@@ -18,12 +21,19 @@ export const Header = () => {
 
                 <div className="hidden md:flex items-center gap-6">
                     {navItems.map((item, index) =>
-                        <div className="cursor-pointer text-sm font-semibold " key={index}>
-                            <a href="/" className="relative group hover:text-blue-400 transition-colors ">
-                                <span >{item}</span>
-                                <div className="bg-blue-400 h-[2px] w-0 group-hover:w-full transition-all duration-300"></div>
-                            </a>
-                        </div>
+                        // <div className="cursor-pointer text-sm font-semibold " key={index}>
+                        //     <a href="/" className="relative group hover:text-blue-400 transition-colors ">
+                        //         <span onClick={item.onClick}>{item.link}</span>
+                        //         <div className="bg-blue-400 h-[2px] w-0 group-hover:w-full transition-all duration-300"></div>
+                        //     </a>
+                        // </div>
+                        <li
+                            key={index}
+                            onClick={item.onClick}
+                            className={`flex items-center gap-3 px-3 py-2 rounded-md cursor-pointer`}
+                        >
+                            <span>{item.label}</span>
+                        </li>
                     )}
 
                 </div>

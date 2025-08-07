@@ -1,16 +1,16 @@
 // import { motion } from "motion/react";
-
 import { MessageSquare as MessageSquareIcon, PersonStanding as PersonStandingIcon, Zap as ZapIcon } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface ServiceType {
     title: string;
     description: string;
     image: string;
     languages: string[];
+    link: string;
 }
 
-
-const data: Array<ServiceType> = [
+const data: Array<ServiceType & { link: string }> = [
     {
         title: "Back-End Development",
         description: "We specialize in building robust, scalable, and high-performance back-end systems for web and mobile applications, including enterprise-grade services. Our expertise ensures reliable infrastructure that can handle complex logic and high user traffic.",
@@ -21,7 +21,8 @@ const data: Array<ServiceType> = [
             "JavaScript",
             "TypeScript",
             "Django"
-        ]
+        ],
+        link: "/services/backend-development-services"
     },
     {
         title: "Front-End Development",
@@ -32,7 +33,8 @@ const data: Array<ServiceType> = [
             "Next.js",
             "JavaScript",
             "TypeScript"
-        ]
+        ],
+        link: "/services/frontend-development-services"
     },
     {
         title: "Web Application Development",
@@ -44,7 +46,8 @@ const data: Array<ServiceType> = [
             "JavaScript",
             "TypeScript",
             "Django"
-        ]
+        ],
+        link: "/services/web-development-services"
     },
     {
         title: "ERP Systems Development",
@@ -55,7 +58,8 @@ const data: Array<ServiceType> = [
             "ERPNext",
             "Python",
             "JavaScript"
-        ]
+        ],
+        link: "/services/erp-services"
     }
 ];
 
@@ -107,8 +111,8 @@ export const ServicesSection = () => {
                             { name: "SaaS", icon: "☁️", color: "hover:bg-cyan-50 hover:border-cyan-200" },
                             { name: "Business services", icon: "📊", color: "hover:bg-purple-50 hover:border-purple-200" }
                         ].map((industry, index) => (
-                            <div 
-                                key={index} 
+                            <div
+                                key={index}
                                 className={`bg-white border-2 border-gray-100 px-6 py-4 rounded-2xl text-sm font-semibold transition-all duration-300 cursor-pointer flex items-center gap-3 shadow-sm hover:shadow-md transform hover:-translate-y-1 ${industry.color}`}
                             >
                                 <span className="text-xl">{industry.icon}</span>
@@ -173,16 +177,17 @@ export const ServicesSection = () => {
 }
 
 const ServiceCard: React.FC<ServiceType> = (props) => {
+    const navigate = useNavigate();
 
     return (
         <div className="group bg-white p-8 rounded-3xl cursor-pointer shadow-lg border border-gray-200 hover:shadow-2xl hover:border-gray-300 transition-all duration-500 transform hover:-translate-y-2 hover:scale-[1.02] bg-gradient-to-br from-white to-gray-50/30">
             <div className="md:flex md:flex-row-reverse md:gap-6 items-start">
                 <div className="mb-4 md:mb-0 md:shrink-0 flex justify-center md:justify-end">
                     <div className="relative overflow-hidden rounded-2xl p-4 bg-gradient-to-br from-blue-50 to-purple-50 group-hover:from-blue-100 group-hover:to-purple-100 transition-all duration-300">
-                        <img 
-                            src={props.image} 
-                            alt={props.title} 
-                            className="h-24 w-24 md:h-28 md:w-28 lg:h-32 lg:w-32 object-contain transform group-hover:scale-110 transition-transform duration-300" 
+                        <img
+                            src={props.image}
+                            alt={props.title}
+                            className="h-24 w-24 md:h-28 md:w-28 lg:h-32 lg:w-32 object-contain transform group-hover:scale-110 transition-transform duration-300"
                         />
                         <div className="absolute inset-0 bg-gradient-to-br from-transparent to-white/10 rounded-2xl"></div>
                     </div>
@@ -200,22 +205,24 @@ const ServiceCard: React.FC<ServiceType> = (props) => {
 
             <div className="flex gap-2 flex-wrap mb-6">
                 {props.languages.map((val, index) => (
-                    <div 
-                        key={index} 
+                    <div
+                        key={index}
                         className="rounded-full px-3 py-2 text-xs font-semibold bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 hover:from-blue-100 hover:to-purple-100 hover:text-gray-800 transition-all duration-200 transform hover:scale-105"
                     >
                         {val}
                     </div>
                 ))}
             </div>
-            
-            <div className="pt-2">
-                <a href="#contact-section" className="group/button">
-                    <button className="relative overflow-hidden text-sm text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg group-hover/button:shadow-purple-500/25">
-                        <span className="relative z-10">Let's Chat</span>
-                        <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 opacity-0 group-hover/button:opacity-100 transition-opacity duration-300"></div>
-                    </button>
-                </a>
+
+            <div className="space-x-2 pt-2">
+                <button onClick={() => navigate('/contact')}  className="relative overflow-hidden text-sm text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-4 py-2 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg group-hover/button:shadow-purple-500/25">
+                    <span className="relative z-10">Let's Chat</span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 opacity-0 group-hover/button:opacity-100 transition-opacity duration-300"></div>
+                </button>
+                <button onClick={() => navigate(props.link)} className="relative overflow-hidden text-xs border border-gray-400 text-gray-600 px-4 py-2.5 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg group-hover/button:shadow-purple-500/25 ">
+                    <span className="relative z-10">Learn more</span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-gray-600 opacity-0 group-hover/button:opacity-100 transition-opacity duration-300"></div>
+                </button>
             </div>
 
         </div>
