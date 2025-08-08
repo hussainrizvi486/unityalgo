@@ -91,7 +91,7 @@ export const TechnologySection = () => {
         <div className="bg-white text-black py-20">
             <div className="max-w-6xl mx-auto px-6">
                 <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                    <h2 className="mb-4 font-bold text-3xl md:text-4xl lg:text-5xl bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 bg-clip-text text-transparent">
                         Technologies We Use
                     </h2>
                     <p className="text-lg text-gray-600 max-w-2xl mx-auto">

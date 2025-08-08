@@ -54,7 +54,7 @@ export const Footer = () => {
                             <div className="flex justify-between items-center mb-4">
                                 <h3 className="text-lg font-bold text-gray-900 relative">
                                     Our Services
-                                    <div className="absolute bottom-0 left-0 w-8 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 mt-1"></div>
+                                    <div className="absolute bottom-0 left-0 w-8 h-0.5 bg-gradient-to-r from-gray-700 via-gray-800  mt-1"></div>
                                 </h3>
                                 <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-2 rounded-full md:hidden shadow-lg">
                                     <ArrowRightIcon className="size-4 text-white" />
@@ -99,7 +99,7 @@ export const Footer = () => {
                             <div className="flex justify-between items-center mb-4">
                                 <h3 className="text-lg font-bold text-gray-900 relative">
                                     Cases
-                                    <div className="absolute bottom-0 left-0 w-8 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 mt-1"></div>
+                                    <div className="absolute bottom-0 left-0 w-8 h-0.5 bg-gradient-to-r from-gray-700 via-gray-800  mt-1"></div>
                                 </h3>
                                 <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-2 rounded-full md:hidden shadow-lg">
                                     <ArrowRightIcon className="size-4 text-white" />
@@ -144,7 +144,7 @@ export const Footer = () => {
                             <div className="flex justify-between items-center mb-4">
                                 <h3 className="text-lg font-bold text-gray-900 relative">
                                     Company
-                                    <div className="absolute bottom-0 left-0 w-8 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 mt-1"></div>
+                                    <div className="absolute bottom-0 left-0 w-8 h-0.5 bg-gradient-to-r from-gray-700 via-gray-800 mt-1"></div>
                                 </h3>
                                 <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-2 rounded-full md:hidden shadow-lg">
                                     <ArrowRightIcon className="size-4 text-white" />

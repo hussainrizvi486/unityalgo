@@ -70,9 +70,9 @@ export const ServicesSection = () => {
             <div className="px-4 py-16 max-w-7xl mx-auto lg:px-8">
                 <div className="mb-16 text-center">
                     <h2 className="font-bold text-3xl md:text-4xl lg:text-5xl bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 bg-clip-text text-transparent">
-                        Services We Provide
+                        Our Services
                     </h2>
-                    <div className="mt-4 w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto rounded-full"></div>
+                    {/* <div className="mt-4 w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto rounded-full"></div> */}
                 </div>
 
                 <div className="mb-16">
@@ -85,9 +85,8 @@ export const ServicesSection = () => {
 
                 <div className="flex items-center justify-center mb-20">
                     <a href="#contact-section" className="group">
-                        <button className="relative overflow-hidden text-sm text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-xl group-hover:shadow-purple-500/25">
-                            <span className="relative z-10">Request a Quote</span>
-                            <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <button className="text-sm text-white px-8 py-4 rounded-md font-semibold cursor-pointer border-1 border-primary bg-primary">
+                            Request a Quote
                         </button>
                     </a>
                 </div>
@@ -180,14 +179,14 @@ const ServiceCard: React.FC<ServiceType> = (props) => {
     const navigate = useNavigate();
 
     return (
-        <div className="group bg-white p-8 rounded-3xl cursor-pointer shadow-lg border border-gray-200 hover:shadow-2xl hover:border-gray-300 transition-all duration-500 transform hover:-translate-y-2 hover:scale-[1.02] bg-gradient-to-br from-white to-gray-50/30">
+        <div className="group bg-white p-8 rounded-lg cursor-pointer shadow-md border border-gray-200 hover:shadow-lg hover:border-gray-300 transition-all duration-500 transform  bg-gradient-to-br from-white to-gray-50/30">
             <div className="md:flex md:flex-row-reverse md:gap-6 items-start">
                 <div className="mb-4 md:mb-0 md:shrink-0 flex justify-center md:justify-end">
                     <div className="relative overflow-hidden rounded-2xl p-4 bg-gradient-to-br from-blue-50 to-purple-50 group-hover:from-blue-100 group-hover:to-purple-100 transition-all duration-300">
                         <img
                             src={props.image}
                             alt={props.title}
-                            className="h-24 w-24 md:h-28 md:w-28 lg:h-32 lg:w-32 object-contain transform group-hover:scale-110 transition-transform duration-300"
+                            className="h-24 w-24 md:h-28 md:w-28 lg:h-32 lg:w-32 object-contain transform group-hover:scale-105 transition-transform duration-300"
                         />
                         <div className="absolute inset-0 bg-gradient-to-br from-transparent to-white/10 rounded-2xl"></div>
                     </div>
@@ -215,13 +214,15 @@ const ServiceCard: React.FC<ServiceType> = (props) => {
             </div>
 
             <div className="space-x-2 pt-2">
-                <button onClick={() => navigate('/contact')}  className="relative overflow-hidden text-sm text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-4 py-2 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg group-hover/button:shadow-purple-500/25">
+                {/* <button onClick={() => navigate('/contact')}  className="relative overflow-hidden text-sm text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-4 py-2 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg group-hover/button:shadow-purple-500/25">
                     <span className="relative z-10">Let's Chat</span>
                     <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 opacity-0 group-hover/button:opacity-100 transition-opacity duration-300"></div>
+                </button> */}
+                <button onClick={() => navigate('/contact')} className="text-xs text-white bg-primary px-4 py-2 rounded-md font-semibold cursor-pointer border-1 border-primary">
+                    Let's Chat
                 </button>
-                <button onClick={() => navigate(props.link)} className="relative overflow-hidden text-xs border border-gray-400 text-gray-600 px-4 py-2.5 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg group-hover/button:shadow-purple-500/25 ">
-                    <span className="relative z-10">Learn more</span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-gray-600 opacity-0 group-hover/button:opacity-100 transition-opacity duration-300"></div>
+                <button onClick={() => navigate(props.link)} className="text-xs border border-gray-400 text-gray-600 px-4 py-2 rounded-md font-semibold">
+                    Learn more
                 </button>
             </div>
 
