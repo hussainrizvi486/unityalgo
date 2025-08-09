@@ -127,7 +127,6 @@ export const ServicesSection = () => {
                             How We Help You <br />
                             Deliver the Best Results
                         </h3>
-                        <div className="mt-4 w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto rounded-full"></div>
                     </div>
 
 
