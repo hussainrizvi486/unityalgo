@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 
 const Index = React.lazy(() => import('./features/public/pages/landing/index'));
@@ -9,6 +9,12 @@ const BackendDetailPage = React.lazy(() => import('./features/public/pages/ourse
 const WebDevDetailPage = React.lazy(() => import('./features/public/pages/ourservices/webdev-detail'));
 const ERPDetailPage = React.lazy(() => import('./features/public/pages/ourservices/erp-detail'));
 const ContactPage = React.lazy(() => import('./features/public/pages/contact/contact-page'));
+
+const PageLoading = () => {
+  return (
+    <div>Loading...</div>
+  )
+}
 
 const Application: React.FC = () => {
   const location = useLocation();
@@ -22,16 +28,19 @@ const Application: React.FC = () => {
   }, []);
 
   return (
-    <Routes>
-      <Route path='/' index element={<Index />} />
-      <Route path='/privacy-policy' element={<PrivacyPolicy />} />
-      <Route path='/services' element={<ServicePage />} />
-      <Route path='/services/frontend-development-services' element={<FrontendDetailPage />} />
-      <Route path='/services/backend-development-services' element={<BackendDetailPage />} />
-      <Route path='/services/web-development-services' element={<WebDevDetailPage />} />
-      <Route path='/services/erp-services' element={<ERPDetailPage />} />
-      <Route path='/contact' element={<ContactPage />} />
-    </Routes>
+    <Suspense fallback={<PageLoading />}>
+      <Routes>
+        <Route path='/' index element={<Index />} />
+        <Route path='/privacy-policy' element={<PrivacyPolicy />} />
+        <Route path='/services' element={<ServicePage />} />
+        <Route path='/services/frontend-development-services' element={<FrontendDetailPage />} />
+        <Route path='/services/backend-development-services' element={<BackendDetailPage />} />
+        <Route path='/services/web-development-services' element={<WebDevDetailPage />} />
+        <Route path='/services/erp-services' element={<ERPDetailPage />} />
+        <Route path='/contact' element={<ContactPage />} />
+      </Routes>
+
+    </Suspense>
   )
 }
 

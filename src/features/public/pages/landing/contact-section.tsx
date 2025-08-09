@@ -58,10 +58,10 @@ export const ContactSection = () => {
 
     return (
         <div className="mx-auto max-w-6xl px-2 py-16" id="contact-section">
-            <div className="flex">
-                <div className="basis-1/3">
-                    <div className="mb-4">
-                        <div className="text-3xl font-bold">
+            <div className="flex justify-between gap-6">
+                <div className="basis-1/2">
+                    <div className="mb-8">
+                        <div className="text-3xl font-bold mb-4">
                             Collaborate with us to build greatness.
                         </div>
                         <div>
@@ -70,21 +70,22 @@ export const ContactSection = () => {
                         </div>
                     </div>
 
-                    <div className="flex items-center gap-4 text-white mb-2">
-                        <MailIcon className="size-5 " />
-                        <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
-                    </div>
-                    <div className="flex items-center gap-4 text-white">
-                        <PhoneIcon className="size-5 text-white" />
-                        <a href={`tel:${contactPhone}`}>{contactPhone}</a>
+                    <div>
+                        <div className="flex items-center gap-4 text-white mb-2">
+                            <MailIcon className="size-5 " />
+                            <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
+                        </div>
+                        <div className="flex items-center gap-4 text-white">
+                            <PhoneIcon className="size-5 text-white" />
+                            <a href={`tel:${contactPhone}`}>{contactPhone}</a>
+                        </div>
                     </div>
                 </div>
 
-
-
-                <div className="basis-2/3">
+                <div >
                     <ContactForm />
                 </div>
+
             </div>
 
             <div className="md:flex md:gap-12 md:items-start">

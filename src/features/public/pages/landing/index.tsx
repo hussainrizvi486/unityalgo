@@ -12,7 +12,7 @@ const Index: React.FC = () => {
         <div className="bg-primary text-primary-foreground min-h-screen">
             <Header />
             <main>
-                <LandingSection />
+                {/* <LandingSection /> */}
                 <ServicesSection />
                 <TechnologySection />
                 <ContactSection />
