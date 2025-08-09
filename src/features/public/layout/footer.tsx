@@ -10,7 +10,7 @@ export const Footer = () => {
                 <div className="md:flex md:justify-between">
                     <div className="hidden md:block md:mr-16 md:max-w-sm">
                         <div className="flex items-center gap-3 mb-6">
-                            <img src="logo.png" alt="UnityAlgo" className="h-10 w-10 sm:h-12 sm:w-12" />
+                            <img src="/logo.png" alt="UnityAlgo" className="h-10 w-10 sm:h-12 sm:w-12" />
                             <div className="font-bold text-2xl bg-gradient-to-r text-black bg-clip-text ">UnityAlgo</div>
                         </div>
 

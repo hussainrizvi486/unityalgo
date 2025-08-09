@@ -34,7 +34,7 @@ const data: Array<ServiceType & { link: string }> = [
             "JavaScript",
             "TypeScript"
         ],
-        link: "/services/frontend-development-services"
+        link: "/services/frontend"
     },
     {
         title: "Web Application Development",

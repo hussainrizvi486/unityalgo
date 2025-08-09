@@ -14,7 +14,7 @@ const Index: React.FC = () => {
             <main>
                 {/* <LandingSection /> */}
                 <ServicesSection />
-                <TechnologySection />
+                {/* <TechnologySection /> */}
                 <ContactSection />
             </main>
 
