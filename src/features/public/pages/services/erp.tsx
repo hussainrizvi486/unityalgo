@@ -1,9 +1,22 @@
-import { Header } from '../../layout/header'
-import { Footer } from '../../layout/footer'
-import { ContactSection } from '../landing/contact-section'
-import { useNavigate } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import { Header } from '../../layout/header';
+import { Footer } from '../../layout/footer';
+import { Link, useNavigate } from "react-router-dom";
+import {
+  Users,
+  Wrench,
+  Zap,
+  Lightbulb,
+  DollarSign,
+  Package,
+  ShoppingBag,
+  Server,
+  ShoppingCart,
+  Check
+} from "lucide-react";
+import { ContactSection } from '../landing/contact-section';
 import { TechStack } from './components/tech-section';
+import { ProjectWorkflow } from './components/project-workflow';
+import { BenefitSection } from './components/benefit';
 
 
 interface ServiceType {
@@ -11,35 +24,6 @@ interface ServiceType {
   description: string;
   image: string;
 }
-
-interface TechnologyType {
-  name: string;
-  image?: string;
-}
-
-const techs: Array<TechnologyType> = [
-  {
-    name: "React JS",
-    image: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
-  },
-
-  {
-    name: "Tailwind CSS",
-    image: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg",
-  },
-  {
-    name: "Python",
-    image: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg",
-  },
-  {
-    name: "Django",
-    image: "https://upload.wikimedia.org/wikipedia/commons/7/75/Django_logo.svg",
-  },
-  {
-    name: "Golang",
-    image: "https://upload.wikimedia.org/wikipedia/commons/0/05/Go_Logo_Blue.svg",
-  },
-]
 
 const data: Array<ServiceType> = [
   {
@@ -68,108 +52,297 @@ const data: Array<ServiceType> = [
   }
 ];
 
+const Header = () => {
 
-const ERPDetailPage = () => {
-  const navigate = useNavigate()
+  const navItems = [
+    { label: "Home", "url": "/" },
+    { label: "Our Products", "url": "/products" },
+    { label: "Our Services", "url": "/services" },
+    { label: "Contact", "url": "/contact" },
+    { label: "Cases", "url": "/cases" },
+  ]
   return (
-    <div className="bg-primary text-primary-foreground min-h-screen">
-      <Header />
-      <div>
-        <div className="flex flex-col items-center py-20 h-screen md:h-auto max-w-7xl mx-auto px-4  lg:px-8">
-          <div className="relative overflow-auto h-full md:h-[30rem] px-4 sm:min-w-[40] space-y-10">
-            <h2 className="text-4xl md:text-5xl font-bold leading-tight bg-gradient-to-r from-blue-600 via-blue-500 via-purple-500 to-purple-600 bg-clip-text text-transparent">
-              Custom Web Development for Promo, Corporate & E-commerce
-            </h2>
-            <p>Our experienced developers build flexible, custom web solutions tailored precisely to your business goals and seamlessly integrated with your existing systems.</p>
-            <button onClick={() => navigate('/contact')} className="relative overflow-hidden text-sm text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg group-hover/button:shadow-purple-500/25">
-              <span className="relative z-10 flex items-center gap-2">Let's Chat <ArrowRight className='h-5 w-5' /></span>
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 opacity-0 group-hover/button:opacity-100 transition-opacity duration-300"></div>
-            </button>
-            <div className="grid grid-cols-1 sm:grid-cols-5 gap-2 md:gap-4">
-              {techs.map((tech, index) => (
-                <div
-                  key={tech.name || index}
-                  className="group/item bg-gradient-to-br from-gray-50 to-white border border-gray-100 rounded-xl p-6 hover:shadow-xl hover:border-blue-200 transition-all duration-300 hover:-translate-y-1 cursor-pointer relative overflow-hidden"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-purple-600/5 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300"></div>
-
-                  <div className="relative z-10 flex flex-col items-center text-center space-y-3">
-                    {tech.image ? (
-                      <div className="w-12 h-12 flex items-center justify-center bg-white rounded-lg shadow-sm border border-gray-100 group-hover/item:scale-110 transition-transform duration-300">
-                        <img
-                          src={tech.image}
-                          alt={tech.name}
-                          className="w-8 h-8 object-contain"
-                        />
-                      </div>
-                    ) : (
-                      <div className="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-gray-200 to-gray-300 rounded-lg group-hover/item:scale-110 transition-transform duration-300">
-                        <div className="w-6 h-6 bg-gradient-to-br from-blue-600 to-purple-600 rounded"></div>
-                      </div>
-                    )}
-
-                    {tech.name && (
-                      <span className="text-sm font-semibold text-gray-800 group-hover/item:text-blue-600 transition-colors duration-300">
-                        {tech.name}
-                      </span>
-                    )}
-                  </div>
-
-                  <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-purple-600 transform scale-x-0 group-hover/item:scale-x-100 transition-transform duration-300"></div>
-                </div>
-              ))}
-            </div>
-
+    <header className="">
+      <div className="flex items-center justify-between max-w-6xl mx-auto py-4 px-2">
+        <Link to="/">
+          <div className="flex items-center gap-2">
+            <img src="/logo.png" alt="UnityAlgo" className="h-10 w-10 sm:h-12 sm:w-12" />
+            <div className="font-bold text-xl">UnityAlgo</div>
           </div>
+        </Link>
+
+        <div className="hidden md:flex items-center gap-6">
+          {navItems.map((item, index) =>
+
+            <Link to={item.url}
+              key={index}
+              className={`flex items-center gap-3 px-3 py-2 rounded-md cursor-pointer`}
+            >
+              <span>{item.label}</span>
+            </Link>
+          )}
+
         </div>
-        <div className='bg-white text-black min-h-screen w-full'>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-4 py-16 max-w-7xl mx-auto lg:px-8">
-            {data.map((props, index) => (
-              <div
-                key={index}
-                className="group bg-white p-8 rounded-3xl cursor-pointer shadow-lg border border-gray-200 hover:shadow-2xl hover:border-gray-300 transition-all duration-500 transform hover:-translate-y-2 hover:scale-[1.02] bg-gradient-to-br from-white to-gray-50/30"
-              >
-                <div className="md:flex md:flex-row-reverse md:gap-6 items-start">
-                  <div className="md:shrink-0 flex justify-center md:justify-end">
-                    <div className="relative overflow-hidden rounded-2xl p-4 bg-gradient-to-br from-blue-50 to-purple-50 group-hover:from-blue-100 group-hover:to-purple-100 transition-all duration-300">
-                      <img
-                        src={props.image}
-                        alt={props.title}
-                        className="h-18 w-18 md:h-24 md:w-24 lg:h-28 lg:w-28 object-contain transform group-hover:scale-110 transition-transform duration-300"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-br from-transparent to-white/10 rounded-2xl"></div>
-                    </div>
-                  </div>
 
-                  <div className="flex-1">
-                    <div className="mb-3 text-xl lg:text-2xl font-bold text-gray-900 group-hover:text-gray-800 transition-colors">
-                      {props.title}
-                    </div>
-                    <div className="text-sm lg:text-base text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors">
-                      {props.description}
-                    </div>
-                  </div>
+        <div className="hidden md:flex">
+          <a href="#contact-section" className="">
+            <button
+              className="py-2 px-6 text-sm font-semibold bg-primary text-primary-foreground rounded-2xl cursor-pointer overflow-hidden" >
+
+              <span className="block transition-transform duration-300 transform hover:-translate-y-1">
+                Hover Me
+              </span>
+            </button>
+          </a>
+        </div>
+
+        {/* <div className="md:hidden">
+          <MenuBar />
+        </div> */}
+      </div>
+    </header>
+  )
+}
+
+
+const Index = () => {
+  return (
+    <div className="bg-white text-black  min-h-screen" >
+      <div className='block md:hidden'>
+        <Header />
+      </div>
+      <main className=''>
+        <div className="relative bg-cover bg-center"
+          style={{ backgroundImage: "url('https://images.pexels.com/photos/3183183/pexels-photo-3183183.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')" }}
+        >
+          <div className="absolute inset-0 bg-black/40"></div>
+
+          <div className='relative z-10'>
+
+            <div className='hidden md:block  text-primary-foreground hover:text-black hover:bg-white transition ease-in duration-300'>
+              <Header />
+            </div>
+            <div className='max-w-6xl mx-auto px-4 py-16'>
+              <div className='mb-6'>
+                <div className='text-2xl md:text-3xl font-bold mb-3 text-primary-foreground'>
+                  Enterprise Resource Planning Transform Your Business with Powerful ERP Solutions
                 </div>
-
+                <div className='text-sm text-primary-foreground'>
+                  We deliver end-to-end ERP systems tailored to your operations, integrating ERPNext
+                  and custom-built modules to streamline workflows, improve efficiency, and give you
+                  real-time insights for smarter decisions.Custom ERP Development, ERPNext Implementation & Expert Consultation.
+                </div>
               </div>
-            ))}
+
+
+              <div className='mb-8'>
+                <a href="#contact-section" className="">
+                  <button className='bg-primary text-primary-foreground px-6 py-2.5 text-sm font-semibold rounded-md'>
+                    Let's Chat
+                  </button>
+                </a>
+              </div>
+
+            </div>
           </div>
-          <div className="flex items-center justify-center mb-20">
-            <a href="#contact-section" className="group">
-              <button className="relative overflow-hidden text-sm text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-xl group-hover:shadow-purple-500/25">
-                <span className="relative z-10">Request a Quote</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </button>
-            </a>
-          </div>
+
+        </div>
+
+
+        <div className='mt-6'>
+          <ERPServices />
+        </div>
+
+        <div className='mt-6'>
+          <CoreERPModules />
+        </div>
+
+        <div className='mt-6'>
+          <ProjectWorkflow />
+        </div>
+
+        <div className='mt-6 '>
           <TechStack />
         </div>
-        <ContactSection />
-      </div>
+
+
+        <div className='mt-6 '>
+          <BenefitSection />
+        </div>
+
+        <div className='py-16 mt-6 bg-primary text-primary-foreground'>
+          <ContactSection />
+        </div>
+
+      </main>
       <Footer />
     </div>
   )
 }
+export default Index
 
-export default ERPDetailPage
+
+type Service = {
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+};
+
+const ERPServices: React.FC = () => {
+  const services: Service[] = [
+    {
+      icon: <Wrench className="w-10 h-10 text-blue-600" />,
+      title: "Custom ERP Development",
+      description:
+        "Tailored ERP solutions built from scratch to meet your unique business requirements. We develop scalable, secure, and user-friendly systems that grow with your business.",
+    },
+    {
+      icon: <Zap className="w-10 h-10 text-blue-600" />,
+      title: "ERPNext Implementation",
+      description:
+        "Professional ERPNext setup, customization, and deployment. We configure ERPNext to match your workflows and provide comprehensive training to your team.",
+    },
+    {
+      icon: <Lightbulb className="w-10 h-10 text-blue-600" />,
+      title: "ERP Consultation",
+      description:
+        "Strategic guidance on ERP selection, implementation planning, and digital transformation. Our experts help you choose the right solution for your business needs.",
+    },
+  ];
+
+  return (
+    <section className="py-16">
+      <div className="max-w-6xl mx-auto px-4">
+        <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+          Our ERP Services
+        </h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {services.map((service, idx) => (
+            <div
+              key={idx}
+              className="bg-white border-gray-200 rounded-lg shadow-sm hover:shadow-md p-6 text-center">
+              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 mx-auto mb-4">
+                {service.icon}
+              </div>
+              <h3 className="text-lg font-semibold mb-2">
+                {service.title}
+              </h3>
+              <p className="text-sm">{service.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+type Module = {
+  title: string;
+  icon: React.ReactNode;
+  points: string[];
+};
+
+const modules: Module[] = [
+  {
+    title: "Financial Management",
+    icon: <DollarSign className="w-10 h-10 text-yellow-500" />,
+    points: [
+      "General Ledger & Chart of Accounts",
+      "Accounts Payable & Receivable",
+      "Budget Planning & Control",
+      "Financial Reporting & Analytics",
+      "Multi-currency Support",
+    ],
+  },
+  {
+    title: "Inventory Management",
+    icon: <Package className="w-10 h-10 text-yellow-700" />,
+    points: [
+      "Real-time Stock Tracking",
+      "Warehouse Management",
+      "Serial Number & Batch Tracking",
+      "Automatic Reorder Points",
+      "Barcode & RFID Integration",
+    ],
+  },
+  {
+    title: "Sales & CRM",
+    icon: <ShoppingBag className="w-10 h-10 text-pink-500" />,
+    points: [
+      "Lead & Opportunity Management",
+      "Sales Order Processing",
+      "Customer Relationship Management",
+      "Quotation & Pricing Management",
+      "Sales Analytics & Forecasting",
+    ],
+  },
+  {
+    title: "Manufacturing",
+    icon: <Server className="w-10 h-10 text-red-500" />,
+    points: [
+      "Production Planning & Scheduling",
+      "Bill of Materials (BOM)",
+      "Work Order Management",
+      "Quality Control & Testing",
+      "Shop Floor Control",
+    ],
+  },
+  {
+    title: "Procurement",
+    icon: <ShoppingCart className="w-10 h-10 text-blue-500" />,
+    points: [
+      "Purchase Requisitions & Orders",
+      "Supplier Management",
+      "RFQ & Tender Management",
+      "Goods Receipt & Inspection",
+      "Vendor Performance Analytics",
+    ],
+  },
+  {
+    title: "Human Resources",
+    icon: <Users className="w-10 h-10 text-blue-600" />,
+    points: [
+      "Employee Management & Records",
+      "Payroll & Benefits Administration",
+      "Time & Attendance Tracking",
+      "Performance Management",
+      "Recruitment & Onboarding",
+    ],
+  },
+];
+
+const CoreERPModules: React.FC = () => {
+  return (
+    <section className="py-16 bg-white">
+      <div className="max-w-6xl mx-auto px-4">
+        <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+          Core ERP Modules
+        </h2>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {modules.map((module, idx) => (
+            <div
+              key={idx}
+              className="bg-white border border-gray-200 rounded-lg shadow-sm p-6 hover:shadow-md transition"
+            >
+              <div className="flex justify-center mb-4">{module.icon}</div>
+              <h3 className="text-lg font-bold text-center text-gray-900 mb-4">
+                {module.title}
+              </h3>
+              <ul className="space-y-2">
+                {module.points.map((point, i) => (
+                  <li key={i} className="flex items-start">
+                    <Check className="w-4 h-4 text-blue-600 mt-1 mr-2 flex-shrink-0" />
+                    <span className="text-gray-700 text-sm">{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
 

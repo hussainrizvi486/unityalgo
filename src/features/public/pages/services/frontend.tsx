@@ -1,7 +1,11 @@
-import { Header } from '../../layout/header';
+// import { Header } from '../../layout/header';
 import { Footer } from '../../layout/footer';
-import { } from '../../layout/footer'
-import { Link, useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
+import { ContactSection } from '../landing/contact-section';
+import { TechStack } from './components/tech-section';
+import { ProjectWorkflow } from './components/project-workflow';
+import { BenefitSection } from './components/benefit';
+import { WhyUnityAlgoSection } from './components/why-unityalgo';
 // import { MenuBar } from "./menu-bar";
 
 
@@ -129,50 +133,73 @@ const Header = () => {
 
 const Index = () => {
   return (
-    //  bg-[url(https://images.pexels.com/photos/3183183/pexels-photo-3183183.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)]
-    <div className="min-h-screen" >
-      <Header />
-      <main className='max-w-6xl mx-auto px-4 py-8'>
-        <div>
-          <div className='mb-6'>
-            <div className='text-3xl font-bold mb-3'>
-              Web App and Front-end Development services
+    <div className="bg-white text-black min-h-screen" >
+      <div className='block md:hidden'>
+        <Header />
+      </div>
+      <main className=''>
+        <div className="relative bg-cover bg-center"
+          style={{ backgroundImage: "url('https://images.pexels.com/photos/3183183/pexels-photo-3183183.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')" }}
+        >
+          <div className="absolute inset-0 bg-black/40"></div>
+
+          <div className='relative z-10'>
+
+            <div className='hidden md:block  text-primary-foreground hover:text-black hover:bg-white transition ease-in duration-300'>
+              <Header />
             </div>
-            <div>
-              We build high-quality web applications for corporate clients and startups, using modern tech stacks to create responsive interfaces with advanced UI components, animations, and data visualizations for a seamless user experience.
-            </div>
-          </div>
-
-
-          <div className='mb-8'>
-            <button className='bg-primary text-primary-foreground px-6 py-2.5 text-sm font-semibold'>
-              Let's Chat
-            </button>
-          </div>
-
-
-          <div className='grid grid-cols-5 gap-4 '>
-            {technologies.map((i, key) => (
-              <div key={key} className='flex flex-col items-center bg-gray-50 rounded-md p-4 cursor-pointer shadow-sm'>
-                <img src={i.image} alt={i.label} className="h-20 w-20 mr-2" />
-                <div className='font-semibold'>{i.label}</div>
+            <div className='max-w-6xl mx-auto px-4 py-16'>
+              <div className='mb-6'>
+                <div className='text-2xl md:text-3xl font-bold mb-3 text-primary-foreground'>
+                  Web App and Front-end Development services
+                </div>
+                <div className='text-sm text-primary-foreground'>
+                  We build high-quality web applications for corporate clients and startups, using modern tech stacks to create responsive interfaces with advanced UI components, animations, and data visualizations for a seamless user experience.
+                </div>
               </div>
-            ))
-            }
-          </div>
 
+
+              <div className='mb-12'>
+                <a href="#contact-section" className="">
+                  <button className='bg-primary text-primary-foreground px-6 py-2.5 text-sm font-semibold rounded-md'>
+                    Let's Chat
+                  </button>
+                </a>
+              </div>
+
+
+              <div className='grid grid-cols-1 md:grid-cols-5 gap-4'>
+                {technologies.map((i, key) => (
+                  <div key={key} className='flex flex-col items-center backdrop-blur-md  text-primary-foreground rounded-xl p-4 cursor-pointer shadow-md'>
+                    <img src={i.image} alt={i.label} className="h-20 w-20 mr-2" />
+                    <div className='font-semibold'>{i.label}</div>
+                  </div>
+                ))
+                }
+              </div>
+            </div>
+          </div>
 
         </div>
 
-        <div className='py-16 mt-6'>
-          <div className='text-3xl font-bold'>
-            Project Stages and Flow
-          </div>
+        <div className='mt-6 py-16'>
+          <WhyUnityAlgoSection />
+        </div>
 
+        <div className='mt-6'>
+          <ProjectWorkflow />
+        </div>
 
-          <div>
-            <ProjectWorkflow />
-          </div>
+        <div className='mt-6 '>
+          <TechStack />
+        </div>
+
+        <div className='mt-6 '>
+          <BenefitSection />
+        </div>
+
+        <div className='py-16 mt-6 bg-primary text-primary-foreground'>
+          <ContactSection />
         </div>
 
       </main>
@@ -183,66 +210,3 @@ const Index = () => {
 export default Index
 
 
-
-const ProjectWorkflow = () => {
-  const steps = [
-    {
-      number: "01",
-      title: "Initial stage",
-      description:
-        "We ensure your project’s success with careful planning. During the initial stage, we collaborate with you to align functionality, performance, and design. We define strategy, set priorities, and establish your budget and deadlines before starting work.",
-    },
-    {
-      number: "02",
-      title: "Design stage",
-      description:
-        "After developing a clear plan of action for your project, our product design process begins. Using a collection of industry-proven techniques and tools, we work to optimize your application’s usability, success, and efficiency, without compromising on scalability.",
-    },
-    {
-      number: "03",
-      title: "Development stage",
-      description:
-        "Product development progresses through multiple releases, including an MVP. We use Agile sprints to speed up the process, running development alongside wireframes, documentation, and mockups.",
-    },
-    {
-      number: "04",
-      title: "Ongoing development, support, and maintenance stage",
-      description:
-        "After the MVP launch, we run sprints to enhance the user interface, optimize performance, and implement new features. We support and maintain your front-end system, delivering a smooth user experience, so you can focus on growing your business.",
-    },
-  ];
-
-  return (
-    <section className="relative bg-cover bg-center py-20 px-4 md:px-12"
-      style={{ backgroundImage: "url('/your-blurred-background.jpg')" }} // Replace with your image path
-    >
-      <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-4 gap-6">
-          {steps.map((step, index) => (
-            <div
-              key={index}
-              className="bg-gray-100 backdrop-blur-md rounded-xl p-6"
-            >
-              <div className="flex items-center space-x-3 mb-4">
-                <span className="text-yellow-400 text-2xl font-bold">
-                  {step.number}
-                </span>
-                <div className="flex-grow h-px bg-yellow-400 relative">
-                  {index < steps.length - 1 && (
-                    <span className="absolute right-0 -top-[6px] text-yellow-400 text-xl">
-                      →
-                    </span>
-                  )}
-                </div>
-              </div>
-              <h3 className="text-lg font-semibold mb-2">{step.title}</h3>
-              <p className="text-sm leading-relaxed">
-                {step.description}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}

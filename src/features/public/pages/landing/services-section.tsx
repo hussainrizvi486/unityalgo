@@ -22,7 +22,7 @@ const data: Array<ServiceType & { link: string }> = [
             "TypeScript",
             "Django"
         ],
-        link: "/services/backend-development-services"
+        link: "/services/backend"
     },
     {
         title: "Front-End Development",
@@ -48,7 +48,7 @@ const data: Array<ServiceType & { link: string }> = [
             "TypeScript",
             "Django"
         ],
-        link: "/services/web-development-services"
+        link: "/services/web-application"
     },
     {
         title: "ERP Systems Development",
@@ -60,7 +60,7 @@ const data: Array<ServiceType & { link: string }> = [
             "Python",
             "JavaScript"
         ],
-        link: "/services/erp-services"
+        link: "/services/erp"
     }
 ];
 
@@ -77,7 +77,7 @@ export const ServicesSection = () => {
                 </div>
 
                 <div className="mb-16">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                         {data.map((service, index) => (
                             <ServiceCard key={index} {...service} />
                         ))}
