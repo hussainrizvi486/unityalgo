@@ -4,8 +4,6 @@ import { Footer } from '../../layout/footer'
 import { ServicesSection } from '../landing/services-section'
 import { ProjectWorkflow } from './components/project-workflow'
 import { TechStack } from './components/tech-section'
-import { BenefitSection } from './components/benefit'
-import { WhyUnityAlgoSection } from './components/why-unityalgo'
 
 const Index = () => {
     return (
@@ -16,18 +14,13 @@ const Index = () => {
                     <div>
                         <ServicesSection />
                     </div>
-                    <div className='bg-white text-gray-900 pb-16'>
-                        <WhyUnityAlgoSection />
-                    </div>
                     <div className='bg-white text-gray-900'>
                         <ProjectWorkflow />
                     </div>
                     <div className='bg-white text-gray-900'>
                         <TechStack />
                     </div>
-                    <div className='bg-white text-gray-900'>
-                        <BenefitSection />
-                    </div>
+                    
                     <div>
                         <ContactSection />
                     </div>

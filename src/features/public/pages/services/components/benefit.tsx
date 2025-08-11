@@ -43,12 +43,12 @@ export const BenefitSection: React.FC = () => {
                     {benefits.map((benefit, idx) => (
                         <div
                             key={idx}
-                            className="bg-white rounded-2xl shadow-sm p-6 flex flex-col justify-between hover:shadow-md"
+                            className="bg-white rounded-2xl shadow-md p-6 flex flex-col justify-between border border-gray-100"
                         >
                             <div className="flex flex-col md:flex-row items-start gap-4">
-                                <div className='flex-3/5'>
-                                    <h3 className="text-lg font-semibold text-gray-900">{benefit.title}</h3>
-                                    <p className="mt-2 text-sm text-gray-600">{benefit.description}</p>
+                                <div className='flex-3/5 space-y-2'>
+                                    <h3 className="text-lg md:text-xl font-semibold text-gray-900">{benefit.title}</h3>
+                                    <p className="text-sm text-gray-600">{benefit.description}</p>
                                 </div>
                                 <div className="flex-1/4 flex-shrink-0 p-3">
                                     <img src={benefit.url} alt={benefit.title} className='h-full w-full'/>

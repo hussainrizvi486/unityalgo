@@ -42,7 +42,7 @@ export const WhyUnityAlgoSection: React.FC = () => {
                     {items.map((item, idx) => (
                         <div
                             key={idx}
-                            className="bg-white rounded-2xl shadow-sm p-6 flex flex-col justify-between hover:shadow-md"
+                            className="bg-white rounded-2xl shadow-md p-6 flex flex-col justify-between border border-gray-100"
                         >
                             <div className="flex flex-col-reverse md:flex-row items-start gap-4">
                                 <div className='flex-3/5'>

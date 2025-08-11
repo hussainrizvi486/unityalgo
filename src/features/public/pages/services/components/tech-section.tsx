@@ -73,11 +73,12 @@ const allSections: TechGroup[] = [
             },
             {
                 name: "PHP",
-                image: "https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg",
+                image: "https://diffco.us/wp-content/uploads/2024/04/3-11.svg",
             },
             {
                 name: "Ruby on Rails",
-                image: "https://upload.wikimedia.org/wikipedia/commons/1/16/Ruby_on_Rails-logo.png",
+                // image: "https://upload.wikimedia.org/wikipedia/commons/1/16/Ruby_on_Rails-logo.png",
+                image: "	https://diffco.us/wp-content/uploads/2024/04/3-9.svg",
             },
             {
                 name: "Go",

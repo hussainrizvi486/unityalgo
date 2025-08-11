@@ -9,18 +9,6 @@ import { WhyUnityAlgoSection } from './components/why-unityalgo';
 // import { MenuBar } from "./menu-bar";
 
 
-interface ServiceType {
-    title: string;
-    description: string;
-    image: string;
-}
-
-interface TechnologyType {
-    name: string;
-    image?: string;
-}
-
-
 const technologies = [
     {
         label: "Node.js",
@@ -35,8 +23,9 @@ const technologies = [
         image: "https://diffco.us/wp-content/uploads/2024/04/3-7.svg",
     },
     {
-        label: "Express.js",
-        image: "https://diffco.us/wp-content/uploads/2024/04/3-3.svg",
+        label: "PHP",
+        // image: "https://diffco.us/wp-content/uploads/2024/04/3-3.svg",
+        image: "https://diffco.us/wp-content/uploads/2024/08/php.svg",
     },
     {
         label: "Golang",
@@ -45,30 +34,30 @@ const technologies = [
 
 
 ]
-const data: Array<ServiceType> = [
-    {
-        title: "Front-end",
-        description: "Our team can develop the front end user interface of your website or web app and integrate it with your existing backend and API.",
-        image: "https://cdn-icons-png.flaticon.com/512/13191/13191231.png",
-    },
-    {
-        title: "Front-end + Backend",
-        description: "When you need to develop a backend solution to support your mobile app, our backend engineering team is ready to help.",
-        image: "https://cdn-icons-png.flaticon.com/512/18570/18570961.png",
+// const data: Array<ServiceType> = [
+//     {
+//         title: "Front-end",
+//         description: "Our team can develop the front end user interface of your website or web app and integrate it with your existing backend and API.",
+//         image: "https://cdn-icons-png.flaticon.com/512/13191/13191231.png",
+//     },
+//     {
+//         title: "Front-end + Backend",
+//         description: "When you need to develop a backend solution to support your mobile app, our backend engineering team is ready to help.",
+//         image: "https://cdn-icons-png.flaticon.com/512/18570/18570961.png",
 
-    },
-    {
-        title: "Admin Panel",
-        description: "We design and develop easy-to-use admin panels for mobile and web apps, using popular UI solutions that are reliable and easy to support and extend.",
-        image: "https://cdn-icons-png.flaticon.com/512/4237/4237641.png",
-    },
-    {
-        title: "Integrations",
-        description: "We integrate your apps with third-party services and APIs, adding features like payments, analytics, and CRMs for enhanced functionality and scalability.",
-        image: "https://cdn-icons-png.flaticon.com/512/12539/12539733.png",
+//     },
+//     {
+//         title: "Admin Panel",
+//         description: "We design and develop easy-to-use admin panels for mobile and web apps, using popular UI solutions that are reliable and easy to support and extend.",
+//         image: "https://cdn-icons-png.flaticon.com/512/4237/4237641.png",
+//     },
+//     {
+//         title: "Integrations",
+//         description: "We integrate your apps with third-party services and APIs, adding features like payments, analytics, and CRMs for enhanced functionality and scalability.",
+//         image: "https://cdn-icons-png.flaticon.com/512/12539/12539733.png",
 
-    }
-];
+//     }
+// ];
 
 
 
@@ -135,7 +124,7 @@ const Index = () => {
                 <div className="relative bg-cover bg-center"
                     style={{ backgroundImage: "url('https://images.pexels.com/photos/3183183/pexels-photo-3183183.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')" }}
                 >
-                    <div className="absolute inset-0 bg-black/40"></div>
+                    <div className="absolute inset-0 bg-black/50 backdrop-blur-xs"></div>
 
                     <div className='relative z-10'>
 
@@ -155,7 +144,7 @@ const Index = () => {
 
                             <div className='mb-12'>
                                 <a href="#contact-section" className="">
-                                    <button className='bg-primary text-primary-foreground px-6 py-2.5 text-sm font-semibold rounded-md'>
+                                    <button className='bg-primary text-primary-foreground px-6 py-2.5 text-sm font-semibold rounded-md cursor-pointer hover:bg-primary/90'>
                                         Let's Chat
                                     </button>
                                 </a>
@@ -164,7 +153,7 @@ const Index = () => {
 
                             <div className='grid grid-cols-1 md:grid-cols-5 gap-4'>
                                 {technologies.map((i, key) => (
-                                    <div key={key} className='flex flex-col items-center backdrop-blur-md  text-primary-foreground rounded-xl p-4 cursor-pointer shadow-md space-y-2'>
+                                    <div key={key} className='flex flex-col items-center backdrop-blur-xl  text-primary-foreground rounded-xl p-4 cursor-pointer shadow-md space-y-2'>
                                         <img src={i.image} alt={i.label} className="h-16 w-16 mr-2" />
                                         <div className='font-semibold'>{i.label}</div>
                                     </div>

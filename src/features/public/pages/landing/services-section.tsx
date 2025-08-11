@@ -39,7 +39,6 @@ const data: Array<ServiceType & { link: string }> = [
     {
         title: "Web Application Development",
         description: "We develop secure, scalable, and customized web applications tailored to meet your specific business objectives, leveraging cutting-edge technologies and best practices.",
-        // image: "https://cdn-icons-png.flaticon.com/512/2620/2620971.png",
         image: "https://cdn-icons-png.flaticon.com/512/5044/5044729.png",
         languages: [
             "HTML",
@@ -73,7 +72,6 @@ export const ServicesSection = () => {
                     <h2 className="font-bold text-4xl">
                         Our Services
                     </h2>
-                    {/* <div className="mt-4 w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto rounded-full"></div> */}
                 </div>
 
                 <div className="mb-16">
@@ -211,10 +209,6 @@ const ServiceCard: React.FC<ServiceType> = (props) => {
             </div>
 
             <div className="space-x-2 pt-2">
-                {/* <button onClick={() => navigate('/contact')}  className="relative overflow-hidden text-sm text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-4 py-2 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg group-hover/button:shadow-purple-500/25">
-                    <span className="relative z-10">Let's Chat</span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 opacity-0 group-hover/button:opacity-100 transition-opacity duration-300"></div>
-                </button> */}
                 <button onClick={() => navigate('/contact')} className="text-xs text-white bg-primary px-4 py-2 rounded-md font-semibold cursor-pointer border-1 border-primary">
                     Let's Chat
                 </button>

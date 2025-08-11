@@ -1,56 +1,56 @@
-import { Header } from '../../layout/header';
+// import { Header } from '../../layout/header';
+import { useState } from 'react';
 import { Footer } from '../../layout/footer';
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
-  Users,
   Wrench,
   Zap,
   Lightbulb,
-  DollarSign,
-  Package,
-  ShoppingBag,
-  Server,
+  Check,
+  Users,
   ShoppingCart,
-  Check
+  Server,
+  ShoppingBag,
+  Package,
+  DollarSign,
+  CircleDollarSign,
+  CheckCircle,
+  LifeBuoy,
+  UserCheck
 } from "lucide-react";
 import { ContactSection } from '../landing/contact-section';
-import { TechStack } from './components/tech-section';
 import { ProjectWorkflow } from './components/project-workflow';
 import { BenefitSection } from './components/benefit';
+// import { TechStack } from './components/tech-section';
 
 
-interface ServiceType {
-  title: string;
-  description: string;
-  image: string;
-}
 
-const data: Array<ServiceType> = [
-  {
-    title: "Custom ERP Systems Development",
-    description:
-      "We develop customized ERP solutions tailored to streamline your business operations, including finance, HR, inventory, procurement, and sales. Our ERP systems ensure better data integration, improved productivity, and real-time insights for smarter decision-making.",
-    image: "https://cdn-icons-png.flaticon.com/512/4149/4149656.png",
-  },
-  {
-    title: "Integrated HR & Payroll Module",
-    description:
-      "Our ERP includes a powerful HR and payroll module to manage employee records, attendance, salary processing, and compliance—all in one centralized system, improving HR efficiency and accuracy.",
-    image: "https://cdn-icons-png.flaticon.com/512/3500/3500833.png",
-  },
-  {
-    title: "Inventory & Supply Chain Management",
-    description:
-      "Track inventory levels, automate reordering, and manage suppliers with ease. Our ERP solutions offer real-time insights into your supply chain to reduce waste and optimize stock control.",
-    image: "https://cdn-icons-png.flaticon.com/512/10407/10407411.png",
-  },
-  {
-    title: "Sales & Customer Relationship Management",
-    description:
-      "Boost sales performance and manage customer data with integrated CRM and sales modules. From lead tracking to post-sale support, everything is unified to enhance customer satisfaction.",
-    image: "https://cdn-icons-png.flaticon.com/512/10407/10407401.png",
-  }
-];
+// const data: Array<ServiceType> = [
+//   {
+//     title: "Custom ERP Systems Development",
+//     description:
+//       "We develop customized ERP solutions tailored to streamline your business operations, including finance, HR, inventory, procurement, and sales. Our ERP systems ensure better data integration, improved productivity, and real-time insights for smarter decision-making.",
+//     image: "https://cdn-icons-png.flaticon.com/512/4149/4149656.png",
+//   },
+//   {
+//     title: "Integrated HR & Payroll Module",
+//     description:
+//       "Our ERP includes a powerful HR and payroll module to manage employee records, attendance, salary processing, and compliance—all in one centralized system, improving HR efficiency and accuracy.",
+//     image: "https://cdn-icons-png.flaticon.com/512/3500/3500833.png",
+//   },
+//   {
+//     title: "Inventory & Supply Chain Management",
+//     description:
+//       "Track inventory levels, automate reordering, and manage suppliers with ease. Our ERP solutions offer real-time insights into your supply chain to reduce waste and optimize stock control.",
+//     image: "https://cdn-icons-png.flaticon.com/512/10407/10407411.png",
+//   },
+//   {
+//     title: "Sales & Customer Relationship Management",
+//     description:
+//       "Boost sales performance and manage customer data with integrated CRM and sales modules. From lead tracking to post-sale support, everything is unified to enhance customer satisfaction.",
+//     image: "https://cdn-icons-png.flaticon.com/512/10407/10407401.png",
+//   }
+// ];
 
 const Header = () => {
 
@@ -104,6 +104,32 @@ const Header = () => {
   )
 }
 
+type Service = {
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+};
+
+const services: Service[] = [
+  {
+    icon: <Wrench className="w-10 h-10 text-yellow-400/85" />,
+    title: "Custom ERP Development",
+    description:
+      "Tailored ERP solutions built from scratch to meet your unique business requirements. We develop scalable, secure, and user-friendly systems that grow with your business.",
+  },
+  {
+    icon: <Zap className="w-10 h-10 text-yellow-400/85" />,
+    title: "ERPNext Implementation",
+    description:
+      "Professional ERPNext setup, customization, and deployment. We configure ERPNext to match your workflows and provide comprehensive training to your team.",
+  },
+  {
+    icon: <Lightbulb className="w-10 h-10 text-yellow-400/85" />,
+    title: "ERP Consultation",
+    description:
+      "Strategic guidance on ERP selection, implementation planning, and digital transformation. Our experts help you choose the right solution for your business needs.",
+  },
+];
 
 const Index = () => {
   return (
@@ -115,7 +141,7 @@ const Index = () => {
         <div className="relative bg-cover bg-center"
           style={{ backgroundImage: "url('https://images.pexels.com/photos/3183183/pexels-photo-3183183.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')" }}
         >
-          <div className="absolute inset-0 bg-black/40"></div>
+          <div className="absolute inset-0 bg-black/50 backdrop-blur-xs"></div>
 
           <div className='relative z-10'>
 
@@ -135,35 +161,49 @@ const Index = () => {
               </div>
 
 
-              <div className='mb-8'>
+              <div className='mb-12'>
                 <a href="#contact-section" className="">
-                  <button className='bg-primary text-primary-foreground px-6 py-2.5 text-sm font-semibold rounded-md'>
+                  <button className='bg-primary text-primary-foreground px-6 py-2.5 text-sm font-semibold rounded-md cursor-pointer hover:bg-primary/90'>
                     Let's Chat
                   </button>
                 </a>
               </div>
 
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {services.map((service, idx) => (
+                  <div
+                    key={idx}
+                    className="text-center backdrop-blur-xl  text-primary-foreground rounded-xl p-6 shadow-md transform hover:-translate-y-1 hover:shadow-md transition duration-300">
+                    <div className="flex items-center justify-center w-16 h-16 rounded-full mx-auto mb-4">
+                      {service.icon}
+                    </div>
+                    <h3 className="text-lg font-semibold mb-2 text-shadow-accent">
+                      {service.title}
+                    </h3>
+                    <p className="text-sm">{service.description}</p>
+                  </div>
+                ))}
+              </div>
             </div>
+
           </div>
-
         </div>
 
-
-        <div className='mt-6'>
+        {/* <div className='mt-6'>
           <ERPServices />
-        </div>
+        </div> */}
 
-        <div className='mt-6'>
-          <CoreERPModules />
+        <div className='mt-6' >
+          <ERPModules />
         </div>
 
         <div className='mt-6'>
           <ProjectWorkflow />
         </div>
 
-        <div className='mt-6 '>
+        {/* <div className='mt-6'>
           <TechStack />
-        </div>
+        </div> */}
 
 
         <div className='mt-6 '>
@@ -174,68 +214,68 @@ const Index = () => {
           <ContactSection />
         </div>
 
-      </main>
+      </main >
       <Footer />
-    </div>
+    </div >
   )
 }
 export default Index
 
 
-type Service = {
-  title: string;
-  description: string;
-  icon: React.ReactNode;
-};
+// type Service = {
+//   title: string;
+//   description: string;
+//   icon: React.ReactNode;
+// };
 
-const ERPServices: React.FC = () => {
-  const services: Service[] = [
-    {
-      icon: <Wrench className="w-10 h-10 text-blue-600" />,
-      title: "Custom ERP Development",
-      description:
-        "Tailored ERP solutions built from scratch to meet your unique business requirements. We develop scalable, secure, and user-friendly systems that grow with your business.",
-    },
-    {
-      icon: <Zap className="w-10 h-10 text-blue-600" />,
-      title: "ERPNext Implementation",
-      description:
-        "Professional ERPNext setup, customization, and deployment. We configure ERPNext to match your workflows and provide comprehensive training to your team.",
-    },
-    {
-      icon: <Lightbulb className="w-10 h-10 text-blue-600" />,
-      title: "ERP Consultation",
-      description:
-        "Strategic guidance on ERP selection, implementation planning, and digital transformation. Our experts help you choose the right solution for your business needs.",
-    },
-  ];
+// const ERPServices: React.FC = () => {
+//   const services: Service[] = [
+//     {
+//       icon: <Wrench className="w-10 h-10 text-yellow-400/85" />,
+//       title: "Custom ERP Development",
+//       description:
+//         "Tailored ERP solutions built from scratch to meet your unique business requirements. We develop scalable, secure, and user-friendly systems that grow with your business.",
+//     },
+//     {
+//       icon: <Zap className="w-10 h-10 text-yellow-400/85" />,
+//       title: "ERPNext Implementation",
+//       description:
+//         "Professional ERPNext setup, customization, and deployment. We configure ERPNext to match your workflows and provide comprehensive training to your team.",
+//     },
+//     {
+//       icon: <Lightbulb className="w-10 h-10 text-yellow-400/85" />,
+//       title: "ERP Consultation",
+//       description:
+//         "Strategic guidance on ERP selection, implementation planning, and digital transformation. Our experts help you choose the right solution for your business needs.",
+//     },
+//   ];
 
-  return (
-    <section className="py-16">
-      <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-          Our ERP Services
-        </h2>
+//   return (
+//     <section className="py-16">
+//       <div className="max-w-6xl mx-auto px-4">
+//         <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+//           Our ERP Services
+//         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {services.map((service, idx) => (
-            <div
-              key={idx}
-              className="bg-white border-gray-200 rounded-lg shadow-sm hover:shadow-md p-6 text-center">
-              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 mx-auto mb-4">
-                {service.icon}
-              </div>
-              <h3 className="text-lg font-semibold mb-2">
-                {service.title}
-              </h3>
-              <p className="text-sm">{service.description}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
+//         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+//           {services.map((service, idx) => (
+//             <div
+//               key={idx}
+//               className="bg-white border-gray-200 rounded-lg shadow-sm hover:shadow-md p-6 text-center">
+//               <div className="flex items-center justify-center w-16 h-16 rounded-full bg-gray-50 mx-auto mb-4">
+//                 {service.icon}
+//               </div>
+//               <h3 className="text-lg font-semibold mb-2">
+//                 {service.title}
+//               </h3>
+//               <p className="text-sm">{service.description}</p>
+//             </div>
+//           ))}
+//         </div>
+//       </div>
+//     </section>
+//   );
+// };
 
 type Module = {
   title: string;
@@ -245,8 +285,8 @@ type Module = {
 
 const modules: Module[] = [
   {
-    title: "Financial Management",
-    icon: <DollarSign className="w-10 h-10 text-yellow-500" />,
+    title: "Accounting",
+    icon: <DollarSign className="w-10 h-10 text-yellow-400/85" />,
     points: [
       "General Ledger & Chart of Accounts",
       "Accounts Payable & Receivable",
@@ -256,8 +296,8 @@ const modules: Module[] = [
     ],
   },
   {
-    title: "Inventory Management",
-    icon: <Package className="w-10 h-10 text-yellow-700" />,
+    title: "Stock",
+    icon: <Package className="w-10 h-10 text-yellow-400/85" />,
     points: [
       "Real-time Stock Tracking",
       "Warehouse Management",
@@ -268,7 +308,7 @@ const modules: Module[] = [
   },
   {
     title: "Sales & CRM",
-    icon: <ShoppingBag className="w-10 h-10 text-pink-500" />,
+    icon: <ShoppingBag className="w-10 h-10 text-yellow-400/85" />,
     points: [
       "Lead & Opportunity Management",
       "Sales Order Processing",
@@ -279,7 +319,7 @@ const modules: Module[] = [
   },
   {
     title: "Manufacturing",
-    icon: <Server className="w-10 h-10 text-red-500" />,
+    icon: <Server className="w-10 h-10 text-yellow-400/85" />,
     points: [
       "Production Planning & Scheduling",
       "Bill of Materials (BOM)",
@@ -290,7 +330,7 @@ const modules: Module[] = [
   },
   {
     title: "Procurement",
-    icon: <ShoppingCart className="w-10 h-10 text-blue-500" />,
+    icon: <ShoppingCart className="w-10 h-10 text-yellow-400/85" />,
     points: [
       "Purchase Requisitions & Orders",
       "Supplier Management",
@@ -300,19 +340,66 @@ const modules: Module[] = [
     ],
   },
   {
-    title: "Human Resources",
-    icon: <Users className="w-10 h-10 text-blue-600" />,
+    title: "Assets",
+    icon: <CircleDollarSign className="w-10 h-10 text-yellow-400/85" />,
     points: [
-      "Employee Management & Records",
-      "Payroll & Benefits Administration",
-      "Time & Attendance Tracking",
-      "Performance Management",
-      "Recruitment & Onboarding",
+      "Asset Registration & Categorization",
+      "Depreciation Tracking",
+      "Maintenance Scheduling",
+      "Asset Transfer & Disposal",
+      "Asset Audit & Reporting",
+    ],
+  },
+  {
+    title: "Point of Sale",
+    icon: <Users className="w-10 h-10 text-yellow-400/85" />,
+    points: [
+      "Real-time Sales Processing",
+      "Barcode & QR Code Scanning",
+      "Multiple Payment Methods",
+      "Discounts & Promotions Management",
+      "Sales Reports & Analytics",
+    ],
+  },
+  {
+    title: "Quality",
+    icon: <CheckCircle className="w-10 h-10 text-yellow-400/85" />,
+    points: [
+      "Quality Inspection & Testing",
+      "Defect Tracking & Resolution",
+      "Compliance & Standards Management",
+      "Audit Trails & Documentation",
+      "Continuous Improvement Tracking",
+    ],
+  },
+  {
+    title: "Support",
+    icon: <LifeBuoy className="w-10 h-10 text-yellow-400/85" />,
+    points: [
+      "Customer Query Management",
+      "Ticketing & Issue Tracking",
+      "Live Chat & Communication Tools",
+      "Knowledge Base & Self-Service Portal",
+      "Service Level Agreement (SLA) Monitoring",
+    ],
+  },
+  {
+    title: "HR & Payroll",
+    icon: <UserCheck className="w-10 h-10 text-yellow-400/85" />,
+    points: [
+      "Employee Information Management",
+      "Attendance & Leave Tracking",
+      "Payroll Processing & Salary Slips",
+      "Tax & Compliance Management",
+      "Performance Reviews & Appraisals",
     ],
   },
 ];
 
-const CoreERPModules: React.FC = () => {
+const ERPModules: React.FC = () => {
+  const [showAll, setShowAll] = useState(false);
+  const displayedModules = showAll ? modules : modules.slice(0, 6);
+
   return (
     <section className="py-16 bg-white">
       <div className="max-w-6xl mx-auto px-4">
@@ -321,7 +408,7 @@ const CoreERPModules: React.FC = () => {
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {modules.map((module, idx) => (
+          {displayedModules.map((module, idx) => (
             <div
               key={idx}
               className="bg-white border border-gray-200 rounded-lg shadow-sm p-6 hover:shadow-md transition"
@@ -333,13 +420,22 @@ const CoreERPModules: React.FC = () => {
               <ul className="space-y-2">
                 {module.points.map((point, i) => (
                   <li key={i} className="flex items-start">
-                    <Check className="w-4 h-4 text-blue-600 mt-1 mr-2 flex-shrink-0" />
+                    <Check className="w-4 h-4 text-yellow-400/85 mt-1 mr-2 flex-shrink-0" />
                     <span className="text-gray-700 text-sm">{point}</span>
                   </li>
                 ))}
               </ul>
             </div>
           ))}
+        </div>
+
+        <div className="flex justify-center mt-8">
+          <button
+            onClick={() => setShowAll(!showAll)}
+            className="bg-primary hover:bg-primary/90 cursor-pointer text-white px-6 py-2 rounded-md font-semibold transition"
+          >
+            {showAll ? "Show Less" : "Show More"}
+          </button>
         </div>
       </div>
     </section>
