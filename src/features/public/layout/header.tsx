@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { MenuBar } from "./menu-bar";
 
 export const Header = () => {
@@ -14,10 +14,12 @@ export const Header = () => {
     return (
         <header className="">
             <div className="flex items-center justify-between max-w-6xl mx-auto py-4 px-2">
-                <div className="flex items-center gap-2">
-                    <img src="logo.png" alt="UnityAlgo" className="h-10 w-10 sm:h-12 sm:w-12" />
-                    <div className="text-white font-bold text-xl">UnityAlgo</div>
-                </div>
+                <Link to="/">
+                    <div className="flex items-center gap-2">
+                        <img src="logo.png" alt="UnityAlgo" className="h-10 w-10 sm:h-12 sm:w-12" />
+                        <div className="text-white font-bold text-xl">UnityAlgo</div>
+                    </div>
+                </Link>
 
                 <div className="hidden md:flex items-center gap-6">
                     {navItems.map((item, index) =>
