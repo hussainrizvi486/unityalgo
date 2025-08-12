@@ -1,11 +1,7 @@
-// import { Header } from '../../layout/header';
 import { useState } from 'react';
 import { Footer } from '../../layout/footer';
 import { Link } from "react-router-dom";
 import {
-  Wrench,
-  Zap,
-  Lightbulb,
   Check,
   Users,
   ShoppingCart,
@@ -19,9 +15,9 @@ import {
   UserCheck
 } from "lucide-react";
 import { ContactSection } from '../landing/contact-section';
-import { ProjectWorkflow } from './components/project-workflow';
+// import { ProjectWorkflow } from './components/project-workflow';
 import { BenefitSection } from './components/benefit';
-// import { TechStack } from './components/tech-section';
+
 
 
 
@@ -107,24 +103,24 @@ const Header = () => {
 type Service = {
   title: string;
   description: string;
-  icon: React.ReactNode;
+  image: string;
 };
 
 const services: Service[] = [
   {
-    icon: <Wrench className="w-10 h-10 text-yellow-400/85" />,
+    image: "https://cdn-icons-png.flaticon.com/512/5979/5979577.png",
     title: "Custom ERP Development",
     description:
       "Tailored ERP solutions built from scratch to meet your unique business requirements. We develop scalable, secure, and user-friendly systems that grow with your business.",
   },
   {
-    icon: <Zap className="w-10 h-10 text-yellow-400/85" />,
+    image: "https://cdn-icons-png.flaticon.com/512/18706/18706141.png",
     title: "ERPNext Implementation",
     description:
       "Professional ERPNext setup, customization, and deployment. We configure ERPNext to match your workflows and provide comprehensive training to your team.",
   },
   {
-    icon: <Lightbulb className="w-10 h-10 text-yellow-400/85" />,
+    image: "https://cdn-icons-png.flaticon.com/512/1651/1651654.png",
     title: "ERP Consultation",
     description:
       "Strategic guidance on ERP selection, implementation planning, and digital transformation. Our experts help you choose the right solution for your business needs.",
@@ -141,13 +137,15 @@ const Index = () => {
         <div className="relative bg-cover bg-center"
           style={{ backgroundImage: "url('https://images.pexels.com/photos/3183183/pexels-photo-3183183.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')" }}
         >
-          <div className="absolute inset-0 bg-black/50 backdrop-blur-xs"></div>
+          <div className="absolute inset-0 bg-black/50 backdrop-blur-md"></div>
 
           <div className='relative z-10'>
 
-            <div className='hidden md:block  text-primary-foreground hover:text-black hover:bg-white transition ease-in duration-300'>
+            <div className='hidden md:block  text-black bg-white transition ease-in duration-300'>
               <Header />
             </div>
+
+
             <div className='max-w-6xl mx-auto px-4 py-16'>
               <div className='mb-6'>
                 <div className='text-2xl md:text-3xl font-bold mb-3 text-primary-foreground'>
@@ -173,9 +171,9 @@ const Index = () => {
                 {services.map((service, idx) => (
                   <div
                     key={idx}
-                    className="text-center backdrop-blur-xl  text-primary-foreground rounded-xl p-6 shadow-md transform hover:-translate-y-1 hover:shadow-md transition duration-300">
+                    className="text-center bg-white rounded-xl p-6 shadow-md transform hover:-translate-y-1 hover:shadow-md transition duration-300">
                     <div className="flex items-center justify-center w-16 h-16 rounded-full mx-auto mb-4">
-                      {service.icon}
+                      <img src={service.image} alt="" />
                     </div>
                     <h3 className="text-lg font-semibold mb-2 text-shadow-accent">
                       {service.title}
@@ -189,16 +187,13 @@ const Index = () => {
           </div>
         </div>
 
-        {/* <div className='mt-6'>
-          <ERPServices />
-        </div> */}
 
         <div className='mt-6' >
           <ERPModules />
         </div>
 
         <div className='mt-6'>
-          <ProjectWorkflow />
+          {/* <ProjectWorkflow /> */}
         </div>
 
         {/* <div className='mt-6'>
@@ -231,19 +226,19 @@ export default Index
 // const ERPServices: React.FC = () => {
 //   const services: Service[] = [
 //     {
-//       icon: <Wrench className="w-10 h-10 text-yellow-400/85" />,
+//       icon: <Wrench  />,
 //       title: "Custom ERP Development",
 //       description:
 //         "Tailored ERP solutions built from scratch to meet your unique business requirements. We develop scalable, secure, and user-friendly systems that grow with your business.",
 //     },
 //     {
-//       icon: <Zap className="w-10 h-10 text-yellow-400/85" />,
+//       icon: <Zap  />,
 //       title: "ERPNext Implementation",
 //       description:
 //         "Professional ERPNext setup, customization, and deployment. We configure ERPNext to match your workflows and provide comprehensive training to your team.",
 //     },
 //     {
-//       icon: <Lightbulb className="w-10 h-10 text-yellow-400/85" />,
+//       icon: <Lightbulb  />,
 //       title: "ERP Consultation",
 //       description:
 //         "Strategic guidance on ERP selection, implementation planning, and digital transformation. Our experts help you choose the right solution for your business needs.",
@@ -286,7 +281,7 @@ type Module = {
 const modules: Module[] = [
   {
     title: "Accounting",
-    icon: <DollarSign className="w-10 h-10 text-yellow-400/85" />,
+    icon: <DollarSign  />,
     points: [
       "General Ledger & Chart of Accounts",
       "Accounts Payable & Receivable",
@@ -297,7 +292,7 @@ const modules: Module[] = [
   },
   {
     title: "Stock",
-    icon: <Package className="w-10 h-10 text-yellow-400/85" />,
+    icon: <Package  />,
     points: [
       "Real-time Stock Tracking",
       "Warehouse Management",
@@ -308,7 +303,7 @@ const modules: Module[] = [
   },
   {
     title: "Sales & CRM",
-    icon: <ShoppingBag className="w-10 h-10 text-yellow-400/85" />,
+    icon: <ShoppingBag  />,
     points: [
       "Lead & Opportunity Management",
       "Sales Order Processing",
@@ -319,7 +314,7 @@ const modules: Module[] = [
   },
   {
     title: "Manufacturing",
-    icon: <Server className="w-10 h-10 text-yellow-400/85" />,
+    icon: <Server  />,
     points: [
       "Production Planning & Scheduling",
       "Bill of Materials (BOM)",
@@ -330,7 +325,7 @@ const modules: Module[] = [
   },
   {
     title: "Procurement",
-    icon: <ShoppingCart className="w-10 h-10 text-yellow-400/85" />,
+    icon: <ShoppingCart  />,
     points: [
       "Purchase Requisitions & Orders",
       "Supplier Management",
@@ -341,7 +336,7 @@ const modules: Module[] = [
   },
   {
     title: "Assets",
-    icon: <CircleDollarSign className="w-10 h-10 text-yellow-400/85" />,
+    icon: <CircleDollarSign  />,
     points: [
       "Asset Registration & Categorization",
       "Depreciation Tracking",
@@ -352,7 +347,7 @@ const modules: Module[] = [
   },
   {
     title: "Point of Sale",
-    icon: <Users className="w-10 h-10 text-yellow-400/85" />,
+    icon: <Users  />,
     points: [
       "Real-time Sales Processing",
       "Barcode & QR Code Scanning",
@@ -363,7 +358,7 @@ const modules: Module[] = [
   },
   {
     title: "Quality",
-    icon: <CheckCircle className="w-10 h-10 text-yellow-400/85" />,
+    icon: <CheckCircle  />,
     points: [
       "Quality Inspection & Testing",
       "Defect Tracking & Resolution",
@@ -374,7 +369,7 @@ const modules: Module[] = [
   },
   {
     title: "Support",
-    icon: <LifeBuoy className="w-10 h-10 text-yellow-400/85" />,
+    icon: <LifeBuoy  />,
     points: [
       "Customer Query Management",
       "Ticketing & Issue Tracking",
@@ -385,7 +380,7 @@ const modules: Module[] = [
   },
   {
     title: "HR & Payroll",
-    icon: <UserCheck className="w-10 h-10 text-yellow-400/85" />,
+    icon: <UserCheck  />,
     points: [
       "Employee Information Management",
       "Attendance & Leave Tracking",
@@ -411,16 +406,18 @@ const ERPModules: React.FC = () => {
           {displayedModules.map((module, idx) => (
             <div
               key={idx}
-              className="bg-white border border-gray-200 rounded-lg shadow-sm p-6 hover:shadow-md transition"
+              className="bg-white border border-gray-200 rounded-lg shadow-sm p-6 hover:shadow-md transition cursor-pointer"
             >
-              <div className="flex justify-center mb-4">{module.icon}</div>
-              <h3 className="text-lg font-bold text-center text-gray-900 mb-4">
-                {module.title}
-              </h3>
+              <div className='flex items-center gap-2'>
+                <div className="flex justify-center mb-4 [&>svg]:w-8 [&>svg]:h-8 [&>svg]:text-emerald-600">{module.icon}</div>
+                <h3 className="text-lg font-bold text-center text-gray-900 mb-4">
+                  {module.title}
+                </h3>
+              </div>
               <ul className="space-y-2">
                 {module.points.map((point, i) => (
                   <li key={i} className="flex items-start">
-                    <Check className="w-4 h-4 text-yellow-400/85 mt-1 mr-2 flex-shrink-0" />
+                    <Check className="w-4 h-4 text-emerald-600 mt-1 mr-2 flex-shrink-0" />
                     <span className="text-gray-700 text-sm">{point}</span>
                   </li>
                 ))}

@@ -1,5 +1,7 @@
 import React, { Suspense } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
+import { Spinner } from './components/ui/spinner';
+import supabase from './supabase';
 
 const Index = React.lazy(() => import('./features/public/pages/landing/index'));
 const PrivacyPolicy = React.lazy(() => import('./features/public/pages/privacy-policy'));
@@ -10,18 +12,23 @@ const WebAppService = React.lazy(() => import('./features/public/pages/services/
 const ServicePage = React.lazy(() => import('./features/public/pages/services/index'));
 const ContactPage = React.lazy(() => import('./features/public/pages/contact/contact-page'));
 
-// const DemoComponentPage = React.lazy(() => import('./components/ui/demo/index'));
 
-import supabase from './supabase';
+
 
 const PageLoading = () => {
   return (
-    <div>Loading...</div>
+    <div className='min-h-screen flex justify-center items-center'>
+      <div>
+        <Spinner />
+        <div className='text-sm  font-medium mt-2'>Loading...</div>
+      </div>
+    </div>
   )
 }
 
 const Application: React.FC = () => {
   const location = useLocation();
+  // return <PageLoading />
 
   console.log(supabase)
 
@@ -44,7 +51,7 @@ const Application: React.FC = () => {
         <Route path='/services/backend' element={<BackendService />} />
         <Route path='/services/web-application' element={<WebAppService />} />
         <Route path='/services' element={<ServicePage />} />
-   
+
         <Route path='/contact' element={<ContactPage />} />
       </Routes>
 

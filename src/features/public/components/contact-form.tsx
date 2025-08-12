@@ -10,30 +10,34 @@ interface LeadPayload {
 }
 
 
-const Spinner = () => {
-    return (
-        <div>
-
-        </div>
-    )
-}
 const ContactForm = () => {
-    const handleSubmit = (event: React.FormEvent) => {
+    const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
 
         const form = new FormData(event.target as HTMLFormElement);
-        const payload: LeadPayload = {};
 
-        for (const [key, value] of form.entries()) {
-            payload[key] = value as string;
-        }
+        // Convert FormData to typed object
+        const payload: LeadPayload = {
+            first_name: form.get("first_name") as string,
+            last_name: form.get("last_name") as string,
+            email: form.get("email") as string,
+            phone_number: form.get("phone_number") as string,
+            company_name: form.get("company_name")?.toString() || "",
+            details: form.get("details")?.toString() || "",
+        };
 
         console.log(payload);
 
-        // supabase.from('leads').insert<LeadPayload>(payload);
+        const { data, error } = await supabase
+            .from("leads")
+            .insert([payload]); // must be an array
 
-        return
-    }
+        if (error) {
+            console.error("Error inserting lead:", error);
+        } else {
+            console.log("Lead saved:", data);
+        }
+    };
     return (
         <div className="md:w-[40rem]">
             <form onSubmit={handleSubmit}>
