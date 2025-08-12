@@ -10,6 +10,8 @@ const WebAppService = React.lazy(() => import('./features/public/pages/services/
 const ServicePage = React.lazy(() => import('./features/public/pages/services/index'));
 const ContactPage = React.lazy(() => import('./features/public/pages/contact/contact-page'));
 
+const DemoComponentPage = React.lazy(() => import('./components/ui/demo/index'));
+
 import supabase from './supabase';
 
 const PageLoading = () => {
@@ -35,6 +37,7 @@ const Application: React.FC = () => {
     <Suspense fallback={<PageLoading />}>
       <Routes>
         <Route path='/' index element={<Index />} />
+        <Route path='/demo' element={<DemoComponentPage />} />
         <Route path='/privacy-policy' element={<PrivacyPolicy />} />
         <Route path='/services/frontend' element={<FrontendService />} />
         <Route path='/services/erp' element={<ERPService />} />
