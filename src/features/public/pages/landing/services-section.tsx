@@ -1,29 +1,15 @@
-// import { motion } from "motion/react";
-import { MessageSquare as MessageSquareIcon, PersonStanding as PersonStandingIcon, Zap as ZapIcon } from "lucide-react";
 import { useNavigate, Link } from "react-router-dom";
+import { MessageSquare as MessageSquareIcon, PersonStanding as PersonStandingIcon, Zap as ZapIcon } from "lucide-react";
 
 interface ServiceType {
     title: string;
     description: string;
     image: string;
     languages: string[];
-    link: string;
+    link?: string;
 }
 
-const data: Array<ServiceType & { link: string }> = [
-    {
-        title: "Back-End Development",
-        description: "We specialize in building robust, scalable, and high-performance back-end systems for web and mobile applications, including enterprise-grade services. Our expertise ensures reliable infrastructure that can handle complex logic and high user traffic.",
-        image: "https://cdn-icons-png.flaticon.com/512/5432/5432506.png",
-        languages: [
-            "Python",
-            "Golang",
-            "JavaScript",
-            "TypeScript",
-            "Django"
-        ],
-        link: "/services/backend"
-    },
+const data: Array<ServiceType> = [
     {
         title: "Front-End Development",
         description: "We craft responsive, fast, and intuitive user interfaces using modern front-end frameworks. Our focus is on delivering seamless user experiences across devices and platforms.",
@@ -32,22 +18,37 @@ const data: Array<ServiceType & { link: string }> = [
             "React",
             "Next.js",
             "JavaScript",
-            "TypeScript"
+            "TypeScript",
+            "Tailwind CSS",
         ],
-        link: "/services/frontend"
+        // link: "/services/frontend"
+    },
+    {
+        title: "Back-End Development",
+        description: "We specialize in building robust, scalable, and high-performance back-end systems for web and mobile applications, including enterprise-grade services. Our expertise ensures reliable infrastructure that can handle complex logic and high user traffic.",
+        image: "https://cdn-icons-png.flaticon.com/512/5432/5432506.png",
+        languages: [
+            "Python",
+            "Go",
+            "JavaScript",
+            "TypeScript",
+            "Django"
+        ],
+        // link: "/services/backend"
     },
     {
         title: "Web Application Development",
         description: "We develop secure, scalable, and customized web applications tailored to meet your specific business objectives, leveraging cutting-edge technologies and best practices.",
         image: "https://cdn-icons-png.flaticon.com/512/5044/5044729.png",
         languages: [
-            "HTML",
-            "CSS",
+            "Python",
             "JavaScript",
             "TypeScript",
+            "React JS",
+            "Next.js",
             "Django"
         ],
-        link: "/services/web-application"
+        // link: "/services/web-application"
     },
     {
         title: "ERP Systems Development",
@@ -57,7 +58,8 @@ const data: Array<ServiceType & { link: string }> = [
             "Frappe",
             "ERPNext",
             "Python",
-            "JavaScript"
+            "Typescript",
+            "Go"
         ],
         link: "/services/erp"
     }
@@ -130,37 +132,40 @@ export const ServicesSection = () => {
 
 
                     <div className="md:grid md:grid-cols-3">
-                        <div className="group cursor-pointer bg-gradient-to-br from-violet-600 to-violet-700 text-white mb-4 px-6 py-8 md:py-12 rounded-3xl hover:shadow-2xl hover:shadow-violet-500/25 lg:rotate-2 lg:hover:rotate-0 transition-all duration-300 transform hover:scale-105">
+                        <div className="group cursor-pointer bg-[#2563EB] text-white mb-4 px-6 py-8 md:py-12 rounded-3xl hover:shadow-2xl hover:shadow-violet-500/25 lg:rotate-2 lg:hover:rotate-0 transition-all duration-300 transform hover:scale-105">
                             <div className="mb-6">
                                 <div className="w-16 h-16 lg:w-20 lg:h-20 bg-white/20 rounded-2xl flex items-center justify-center backdrop-blur-sm">
                                     <MessageSquareIcon className="size-8 lg:size-10 stroke-2" />
                                 </div>
                             </div>
                             <div className="text-xl lg:text-2xl font-bold mb-4 group-hover:text-violet-100 transition-colors">
-                                Clear Communication
+                                Transparent Communication
                             </div>
                             <div className="text-sm lg:text-base leading-relaxed text-violet-100">
-                                We build relationships based on integrity and trust, deliver on our promises, and always maintain clear communication.
+                                We foster trust through openness, uphold our commitments, and ensure every interaction is clear and straightforward.
                             </div>
                         </div>
 
-                        <div className="cursor-pointer bg-cyan-600 text-white mb-4  px-4 py-6 md:py-12 rounded-3xl sm:px-8 lg:rotate-[-3deg] lg:hover:rotate-0 transition-transform duration-200">
+                        <div className="cursor-pointer bg-[#F97316] text-white mb-4  px-4 py-6 md:py-12 rounded-3xl sm:px-8 lg:rotate-[-3deg] lg:hover:rotate-0 transition-transform duration-200">
                             <div className="mb-2">
                                 <PersonStandingIcon className="size-10 stroke-3 lg:size-14" />
                             </div>
-                            <div className="text-lg font-bold my-4">Customer-Centric Approach</div>
+                            <div className="text-lg font-bold my-4">Customer-First Mindset</div>
                             <div className="text-sm mt-2">
-                                We prioritize our client’s success, understand your unique needs, and deliver tailored solutions that drive your business growth.
+                                We focus on your success by understanding your goals and delivering customized solutions that drive lasting growth.
+
                             </div>
                         </div>
 
-                        <div className="cursor-pointer bg-emerald-600 text-white mb-4 px-4 py-6 md:py-12 rounded-3xl sm:px-8 lg:rotate-3 lg:hover:rotate-0 transition-transform duration-200">
+                        <div className="cursor-pointer bg-[#7C3AED] text-white mb-4 px-4 py-6 md:py-12 rounded-3xl sm:px-8 lg:rotate-3 lg:hover:rotate-0 transition-transform duration-200">
                             <div className="mb-2">
                                 <ZapIcon className="size-10 lg:size-14 stroke-2" />
                             </div>
-                            <div className="text-lg font-bold my-4">Innovation and Excellence</div>
+                            <div className="text-lg font-bold my-4">Innovation with Excellence
+                            </div>
                             <div className="text-sm mt-2">
-                                We consistently deliver innovative, high-quality solutions as a team on the cutting edge of technology trends.
+                                Our team delivers creative, high-quality solutions while staying ahead of emerging technology trends.
+
                             </div>
                         </div>
                     </div>
@@ -212,11 +217,14 @@ const ServiceCard: React.FC<ServiceType> = (props) => {
                 <button onClick={() => navigate('/contact')} className="text-xs text-white bg-primary px-4 py-2 rounded-md font-semibold cursor-pointer border-1 border-primary">
                     Let's Chat
                 </button>
-                <Link to={props.link}>
-                    <button className="text-xs border border-gray-400 text-gray-600 px-4 py-2 rounded-md font-semibold">
-                        Learn more
-                    </button>
-                </Link>
+                {
+                    props.link &&
+                    <Link to={props.link}>
+                        <button className="text-xs border border-gray-400 text-gray-600 px-4 py-2 rounded-md font-semibold">
+                            Learn more
+                        </button>
+                    </Link>
+                }
             </div>
 
         </div>
