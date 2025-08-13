@@ -98,7 +98,7 @@ export const TechnologySection = () => {
                         We leverage cutting-edge technologies and industry-leading tools to build robust, scalable, and innovative solutions
                     </p>
                 </div>
-                {/* 
+                
                 <div className="grid gap-12">
                     {Object.entries(technologies).map(([category, techs]) => (
                         <div key={category} className="group">
@@ -145,7 +145,7 @@ export const TechnologySection = () => {
                             </div>
                         </div>
                     ))}
-                </div> */}
+                </div>
 
 
             </div>
