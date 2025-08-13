@@ -1,4 +1,5 @@
 import supabase from "../../../supabase";
+import toast from 'react-hot-toast';
 
 interface LeadPayload {
     first_name: string;
@@ -16,7 +17,6 @@ const ContactForm = () => {
 
         const form = new FormData(event.target as HTMLFormElement);
 
-        // Convert FormData to typed object
         const payload: LeadPayload = {
             first_name: form.get("first_name") as string,
             last_name: form.get("last_name") as string,
@@ -26,7 +26,8 @@ const ContactForm = () => {
             details: form.get("details")?.toString() || "",
         };
 
-        console.log(payload);
+        toast.success('our details have been successfully submitted.');
+
 
         const { data, error } = await supabase
             .from("leads")

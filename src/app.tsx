@@ -1,4 +1,6 @@
 import React, { Suspense } from 'react';
+import { Toaster } from 'react-hot-toast';
+
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { Spinner } from './components/ui/spinner';
 import supabase from './supabase';
@@ -42,6 +44,7 @@ const Application: React.FC = () => {
 
   return (
     <Suspense fallback={<PageLoading />}>
+      <Toaster />
       <Routes>
         <Route path='/' index element={<Index />} />
         {/* <Route path='/demo' element={<DemoComponentPage />} /> */}
