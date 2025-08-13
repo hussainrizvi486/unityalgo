@@ -91,14 +91,14 @@ export const TechnologySection = () => {
         <div className="bg-white text-black py-20">
             <div className="max-w-6xl mx-auto px-6">
                 <div className="text-center mb-16">
-                    <h2 className="mb-4 font-bold text-3xl md:text-4xl lg:text-5xl bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 bg-clip-text text-transparent">
+                    <h2 className="mb-4 font-bold text-4xl">
                         Technologies We Use
                     </h2>
                     <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                         We leverage cutting-edge technologies and industry-leading tools to build robust, scalable, and innovative solutions
                     </p>
                 </div>
-
+                {/* 
                 <div className="grid gap-12">
                     {Object.entries(technologies).map(([category, techs]) => (
                         <div key={category} className="group">
@@ -107,7 +107,6 @@ export const TechnologySection = () => {
                                     {category}
                                     <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
                                 </h3>
-                                {/* <div className="w-12 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600"></div> */}
                             </div>
                             
                             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
@@ -146,7 +145,9 @@ export const TechnologySection = () => {
                             </div>
                         </div>
                     ))}
-                </div>
+                </div> */}
+
+
             </div>
         </div>
     );

@@ -10,7 +10,7 @@ export const Footer = () => {
                 <div className="md:flex md:justify-between">
                     <div className="hidden md:block md:mr-16 md:max-w-sm">
                         <div className="flex items-center gap-3 mb-6">
-                            <img src="logo.png" alt="UnityAlgo" className="h-10 w-10 sm:h-12 sm:w-12" />
+                            <img src="/logo.png" alt="UnityAlgo" className="h-10 w-10 sm:h-12 sm:w-12" />
                             <div className="font-bold text-2xl bg-gradient-to-r text-black bg-clip-text ">UnityAlgo</div>
                         </div>
 
@@ -52,9 +52,8 @@ export const Footer = () => {
                     <div className="mb-8 md:mb-0 md:grid md:grid-cols-3 md:gap-12 md:flex-auto">
                         <div className="mb-8 md:mb-0">
                             <div className="flex justify-between items-center mb-4">
-                                <h3 className="text-lg font-bold text-gray-900 relative">
+                                <h3 className="text-lg font-bold text-gray-900">
                                     Our Services
-                                    <div className="absolute bottom-0 left-0 w-8 h-0.5 bg-gradient-to-r from-gray-700 via-gray-800  mt-1"></div>
                                 </h3>
                                 <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-2 rounded-full md:hidden shadow-lg">
                                     <ArrowRightIcon className="size-4 text-white" />
@@ -97,9 +96,9 @@ export const Footer = () => {
 
                         <div className="mb-8 md:mb-0">
                             <div className="flex justify-between items-center mb-4">
-                                <h3 className="text-lg font-bold text-gray-900 relative">
+                                <h3 className="text-lg font-bold text-gray-900">
                                     Cases
-                                    <div className="absolute bottom-0 left-0 w-8 h-0.5 bg-gradient-to-r from-gray-700 via-gray-800  mt-1"></div>
+                                    {/* <div className="absolute bottom-0 left-0 w-8 h-0.5 bg-gradient-to-r from-gray-700 via-gray-800  mt-1"></div> */}
                                 </h3>
                                 <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-2 rounded-full md:hidden shadow-lg">
                                     <ArrowRightIcon className="size-4 text-white" />
@@ -142,9 +141,8 @@ export const Footer = () => {
 
                         <div className="mb-8 md:mb-0">
                             <div className="flex justify-between items-center mb-4">
-                                <h3 className="text-lg font-bold text-gray-900 relative">
+                                <h3 className="text-lg font-bold text-gray-900">
                                     Company
-                                    <div className="absolute bottom-0 left-0 w-8 h-0.5 bg-gradient-to-r from-gray-700 via-gray-800 mt-1"></div>
                                 </h3>
                                 <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-2 rounded-full md:hidden shadow-lg">
                                     <ArrowRightIcon className="size-4 text-white" />
