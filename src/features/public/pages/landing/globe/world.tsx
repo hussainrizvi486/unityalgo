@@ -389,10 +389,20 @@ const sampleArcs = [
 
 
 const WorldComponent = () => {
+    // const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+
+    // const config = {
+    //     ...globeConfig,
+    //     autoRotate: true,
+    //     autoRotateSpeed: 0.5,
+    //     enableRotation: !isMobile
+    // };
+
     return (
         <Globe
             data={sampleArcs}
             globeConfig={globeConfig}
+            // globeConfig={config}
         />
     )
 }

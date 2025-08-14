@@ -34,7 +34,13 @@ export const Header = () => {
                             onClick={item.onClick}
                             className={`flex items-center gap-3 px-3 py-2 rounded-md cursor-pointer`}
                         >
-                            <span>{item.label}</span>
+                            {/* <span>{item.label}</span> */}
+                            <div className="group inline-block">
+                                <span className="relative cursor-pointer">
+                                    {item.label}
+                                    <span className="absolute left-0 -bottom-0.5 h-[2px] w-0 bg-blue-400 transition-all duration-300 ease-in-out group-hover:w-full"></span>
+                                </span>
+                            </div>
                         </li>
                     )}
 

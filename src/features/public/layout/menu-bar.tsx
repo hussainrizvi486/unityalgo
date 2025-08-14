@@ -8,27 +8,36 @@ import {
 
 import { AlignJustify as MenuIcon, X as CloseIcon } from "lucide-react";
 import { Brand } from "../../../components/brand";
+import { useNavigate } from "react-router-dom";
 
-const MenuItems = [
-    {
-        "label": "Home",
-        "url": "/",
-    },
-    {
-        "label": "About Us",
-        "url": "/about",
-    }, {
+// const MenuItems = [
+//     {
+//         "label": "Home",
+//         "url": "/",
+//     },
+//     {
+//         "label": "About Us",
+//         "url": "/about",
+//     }, {
 
-        "label": "Services",
-        "url": "/services",
-    },
+//         "label": "Services",
+//         "url": "/services",
+//     },
 
-    {
-        "Contact Us": "Contact Us",
-        "url": "/contact",
-    }
-]
+//     {
+//         "Contact Us": "Contact Us",
+//         "url": "/contact",
+//     }
+// ]
 const MenuBar: React.FC = () => {
+    const navigate = useNavigate();
+
+    const MenuItems = [
+        { label: "Home", onClick: () => navigate('/') },
+        { label: "About Us" },
+        { label: "Services", onClick: () => navigate('/services') },
+        { label: "Contact Us", onClick: () => navigate('/contact') },
+    ]
 
     return (
         <Sheet >
@@ -40,7 +49,7 @@ const MenuBar: React.FC = () => {
             <SheetContent side="top" className="bg-primary text-primary-foreground">
                 <div className="px-2">
                     <div className="flex items-center justify-between mb-6">
-                        <div>
+                        <div onClick={() => navigate('/')}>
                             <Brand />
                         </div>
                         <div>
@@ -55,7 +64,11 @@ const MenuBar: React.FC = () => {
                     <div >
                         {
                             MenuItems.map((item, index) => (
-                                <div key={index} className="text-sm mb-2">
+                                <div
+                                    key={index}
+                                    onClick={item.onClick}
+                                    className="text-sm mb-2"
+                                >
                                     {item.label}
                                 </div>
                             ))
