@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Footer } from '../../layout/footer';
+import { MenuBar } from "../../layout/menu-bar";
 import { Link } from "react-router-dom";
 import {
   Check,

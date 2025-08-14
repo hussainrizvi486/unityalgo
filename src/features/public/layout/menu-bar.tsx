@@ -34,8 +34,8 @@ const MenuBar: React.FC = () => {
 
     const MenuItems = [
         { label: "Home", onClick: () => navigate('/') },
-        { label: "About Us" },
         { label: "Services", onClick: () => navigate('/services') },
+        { label: "About Us" },
         { label: "Contact Us", onClick: () => navigate('/contact') },
     ]
 
@@ -61,13 +61,14 @@ const MenuBar: React.FC = () => {
                         </div>
                     </div>
 
-                    <div >
+                    {/* <div className="space-y-2"> */}
+                    <div className="flex justify-between py-2">
                         {
                             MenuItems.map((item, index) => (
                                 <div
                                     key={index}
                                     onClick={item.onClick}
-                                    className="text-sm mb-2"
+                                    className="text-sm"
                                 >
                                     {item.label}
                                 </div>
