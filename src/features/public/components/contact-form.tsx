@@ -42,12 +42,12 @@ const ContactForm = () => {
     return (
         <div className="md:w-[40rem]">
             <form onSubmit={handleSubmit}>
-                <div className="flex items-center gap-2 mb-6">
-                    <div className="basis-full">
+                <div className="md:flex items-center gap-2  ">
+                    <div className="basis-full mb-6">
                         <div className="text-sm font-medium mb-2">First name</div>
                         <input type="text" className="border px-2 py-2 rounded-sm w-full text-sm" placeholder="" name="first_name" required />
                     </div>
-                    <div className="basis-full">
+                    <div className="basis-full mb-6">
                         <div className="text-sm font-medium mb-2">Last name</div>
                         <input type="text" className="border px-2 py-2 rounded-sm w-full text-sm" placeholder="" name="last_name" required />
                     </div>
@@ -59,13 +59,13 @@ const ContactForm = () => {
                 </div>
 
 
-                <div className="flex items-center gap-2 mb-6">
-                    <div className="basis-full">
+                <div className="md:flex items-center gap-2 ">
+                    <div className="basis-full mb-6">
                         <div className="text-sm font-medium mb-2">Work email</div>
                         <input type="text" className="border px-2 py-2 rounded-sm w-full text-sm" placeholder="example@domain.com" name="email" required />
                     </div>
 
-                    <div className="basis-full">
+                    <div className="basis-full mb-6">
                         <div className="text-sm font-medium mb-2">Phone number</div>
                         <input type="text" className="border px-2 py-2 rounded-sm w-full text-sm" placeholder="+1 (123) 456-7890" name="phone_number" required />
                     </div>
@@ -77,7 +77,7 @@ const ContactForm = () => {
                 </div>
 
                 <div>
-                    <button type="submit" className="w-full bg-white text-primary font-semibold py-3 rounded-md cursor-pointer">Send Request</button>
+                    <button type="submit" className="w-full bg-white text-primary font-medium py-3 rounded-md cursor-pointer text-sm">Send Request</button>
                 </div>
 
 

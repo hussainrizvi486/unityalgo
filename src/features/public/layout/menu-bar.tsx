@@ -8,37 +8,21 @@ import {
 
 import { AlignJustify as MenuIcon, X as CloseIcon } from "lucide-react";
 import { Brand } from "../../../components/brand";
+import { navItems } from "./header";
+import { Link } from "react-router-dom";
 
-const MenuItems = [
-    {
-        "label": "Home",
-        "url": "/",
-    },
-    {
-        "label": "About Us",
-        "url": "/about",
-    }, {
 
-        "label": "Services",
-        "url": "/services",
-    },
-
-    {
-        "Contact Us": "Contact Us",
-        "url": "/contact",
-    }
-]
 const MenuBar: React.FC = () => {
 
     return (
-        <Sheet >
+        <Sheet>
 
-            <SheetTrigger asChild>
+            <SheetTrigger asChild >
                 <MenuIcon className="size-7" />
             </SheetTrigger>
 
-            <SheetContent side="top" className="bg-primary text-primary-foreground">
-                <div className="px-2">
+            <SheetContent side="top" className="bg-primary text-primary-foreground px-2 py-4 border-none shadow-none">
+                <div>
                     <div className="flex items-center justify-between mb-6">
                         <div>
                             <Brand />
@@ -52,12 +36,14 @@ const MenuBar: React.FC = () => {
                         </div>
                     </div>
 
-                    <div >
+                    <div className="px-2">
                         {
-                            MenuItems.map((item, index) => (
-                                <div key={index} className="text-sm mb-2">
-                                    {item.label}
-                                </div>
+                            navItems.map((item, index) => (
+                                <Link to={item.url} key={index} >
+                                    <div className="text-sm mb-3 font-medium">
+                                        {item.label}
+                                    </div>
+                                </Link>
                             ))
                         }
                     </div>

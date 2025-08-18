@@ -71,7 +71,7 @@ export const ServicesSection = () => {
         <div className="bg-white text-black min-h-screen">
             <div className="px-4 py-16 max-w-7xl mx-auto lg:px-8">
                 <div className="mb-16 text-center">
-                    <h2 className="font-bold text-4xl">
+                    <h2 className="font-bold text-2xl md:text-4xl ">
                         Our Services
                     </h2>
                 </div>
@@ -84,17 +84,10 @@ export const ServicesSection = () => {
                     </div>
                 </div>
 
-                {/* <div className="flex items-center justify-center mb-20">
-                    <a href="#contact-section" className="group">
-                        <button className="text-sm text-white px-8 py-4 rounded-md font-semibold cursor-pointer border-1 border-primary bg-primary">
-                            Request a Quote
-                        </button>
-                    </a>
-                </div> */}
 
                 <div className="py-16">
                     <div className="text-center mb-12">
-                        <h3 className="font-bold text-4xl">
+                        <h3 className="font-bold text-2xl md:text-4xl ">
                             Our Expertise for Your Success
                         </h3>
                         <p className="mt-6 text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">
@@ -182,8 +175,9 @@ const ServiceCard: React.FC<ServiceType> = (props) => {
     const navigate = useNavigate();
 
     return (
-        <div className="group bg-white p-8 rounded-lg cursor-pointer shadow-md border border-gray-200 hover:shadow-lg hover:border-gray-300 transition-all duration-500 transform  bg-gradient-to-br from-white to-gray-50/30">
+        <div className="group bg-white p-4 md:p-8 rounded-lg cursor-pointer shadow-md border border-gray-200 hover:shadow-lg hover:border-gray-300 transition-all duration-500 transform  bg-gradient-to-br from-white to-gray-50/30">
             <div className="md:flex md:flex-row-reverse md:gap-6 items-start">
+
                 <div className="mb-4 md:mb-0 md:shrink-0 flex justify-center md:justify-end">
                     <img
                         src={props.image}

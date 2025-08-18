@@ -1,5 +1,5 @@
+import React from "react";
 import { World as Globe } from "./globe";
-import { memo } from "react";
 
 const globeConfig = {
     pointSize: 4,
@@ -388,13 +388,13 @@ const sampleArcs = [
 ];
 
 
-const WorldComponent = () => {
+const WorldComponent = React.memo(() => {
     return (
         <Globe
             data={sampleArcs}
             globeConfig={globeConfig}
         />
     )
-}
+})
 
-export const World = memo(WorldComponent);
+export default WorldComponent;
