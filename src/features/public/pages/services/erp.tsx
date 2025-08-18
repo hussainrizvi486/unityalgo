@@ -75,7 +75,13 @@ const Header = () => {
               key={index}
               className={`flex items-center gap-3 px-3 py-2 rounded-md cursor-pointer`}
             >
-              <span>{item.label}</span>
+              {/* <span>{item.label}</span> */}
+              <div className="group inline-block">
+                <span className="relative cursor-pointer">
+                  {item.label}
+                  <span className="absolute left-0 -bottom-0.5 h-[2px] w-0 bg-blue-400 transition-all duration-300 ease-in-out group-hover:w-full"></span>
+                </span>
+              </div>
             </Link>
           )}
 
@@ -282,7 +288,7 @@ type Module = {
 const modules: Module[] = [
   {
     title: "Accounting",
-    icon: <DollarSign  />,
+    icon: <DollarSign />,
     points: [
       "General Ledger & Chart of Accounts",
       "Accounts Payable & Receivable",
@@ -293,7 +299,7 @@ const modules: Module[] = [
   },
   {
     title: "Stock",
-    icon: <Package  />,
+    icon: <Package />,
     points: [
       "Real-time Stock Tracking",
       "Warehouse Management",
@@ -304,7 +310,7 @@ const modules: Module[] = [
   },
   {
     title: "Sales & CRM",
-    icon: <ShoppingBag  />,
+    icon: <ShoppingBag />,
     points: [
       "Lead & Opportunity Management",
       "Sales Order Processing",
@@ -315,7 +321,7 @@ const modules: Module[] = [
   },
   {
     title: "Manufacturing",
-    icon: <Server  />,
+    icon: <Server />,
     points: [
       "Production Planning & Scheduling",
       "Bill of Materials (BOM)",
@@ -326,7 +332,7 @@ const modules: Module[] = [
   },
   {
     title: "Procurement",
-    icon: <ShoppingCart  />,
+    icon: <ShoppingCart />,
     points: [
       "Purchase Requisitions & Orders",
       "Supplier Management",
@@ -337,7 +343,7 @@ const modules: Module[] = [
   },
   {
     title: "Assets",
-    icon: <CircleDollarSign  />,
+    icon: <CircleDollarSign />,
     points: [
       "Asset Registration & Categorization",
       "Depreciation Tracking",
@@ -348,7 +354,7 @@ const modules: Module[] = [
   },
   {
     title: "Point of Sale",
-    icon: <Users  />,
+    icon: <Users />,
     points: [
       "Real-time Sales Processing",
       "Barcode & QR Code Scanning",
@@ -359,7 +365,7 @@ const modules: Module[] = [
   },
   {
     title: "Quality",
-    icon: <CheckCircle  />,
+    icon: <CheckCircle />,
     points: [
       "Quality Inspection & Testing",
       "Defect Tracking & Resolution",
@@ -370,7 +376,7 @@ const modules: Module[] = [
   },
   {
     title: "Support",
-    icon: <LifeBuoy  />,
+    icon: <LifeBuoy />,
     points: [
       "Customer Query Management",
       "Ticketing & Issue Tracking",
@@ -381,7 +387,7 @@ const modules: Module[] = [
   },
   {
     title: "HR & Payroll",
-    icon: <UserCheck  />,
+    icon: <UserCheck />,
     points: [
       "Employee Information Management",
       "Attendance & Leave Tracking",
