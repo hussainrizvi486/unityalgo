@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { Footer } from '../../layout/footer';
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
+import { Footer } from '../../layout/footer';
 import {
   Check,
   Users,
@@ -15,51 +15,18 @@ import {
   UserCheck
 } from "lucide-react";
 import { ContactSection } from '../landing/contact-section';
-// import { ProjectWorkflow } from './components/project-workflow';
 import { BenefitSection } from './components/benefit';
+import { navItems } from '../../layout/header';
 
 
-
-
-// const data: Array<ServiceType> = [
-//   {
-//     title: "Custom ERP Systems Development",
-//     description:
-//       "We develop customized ERP solutions tailored to streamline your business operations, including finance, HR, inventory, procurement, and sales. Our ERP systems ensure better data integration, improved productivity, and real-time insights for smarter decision-making.",
-//     image: "https://cdn-icons-png.flaticon.com/512/4149/4149656.png",
-//   },
-//   {
-//     title: "Integrated HR & Payroll Module",
-//     description:
-//       "Our ERP includes a powerful HR and payroll module to manage employee records, attendance, salary processing, and compliance—all in one centralized system, improving HR efficiency and accuracy.",
-//     image: "https://cdn-icons-png.flaticon.com/512/3500/3500833.png",
-//   },
-//   {
-//     title: "Inventory & Supply Chain Management",
-//     description:
-//       "Track inventory levels, automate reordering, and manage suppliers with ease. Our ERP solutions offer real-time insights into your supply chain to reduce waste and optimize stock control.",
-//     image: "https://cdn-icons-png.flaticon.com/512/10407/10407411.png",
-//   },
-//   {
-//     title: "Sales & Customer Relationship Management",
-//     description:
-//       "Boost sales performance and manage customer data with integrated CRM and sales modules. From lead tracking to post-sale support, everything is unified to enhance customer satisfaction.",
-//     image: "https://cdn-icons-png.flaticon.com/512/10407/10407401.png",
-//   }
-// ];
 
 const Header = () => {
 
-  const navItems = [
-    { label: "Home", "url": "/" },
-    { label: "Our Products", "url": "/products" },
-    { label: "Our Services", "url": "/services" },
-    { label: "Contact", "url": "/contact" },
-    { label: "Cases", "url": "/cases" },
-  ]
   return (
     <header className="">
+
       <div className="flex items-center justify-between max-w-6xl mx-auto py-4 px-2">
+
         <Link to="/">
           <div className="flex items-center gap-2">
             <img src="/logo.png" alt="UnityAlgo" className="h-10 w-10 sm:h-12 sm:w-12" />
@@ -67,26 +34,25 @@ const Header = () => {
           </div>
         </Link>
 
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden md:flex md:items-center gap-4 ">
           {navItems.map((item, index) =>
 
             <Link to={item.url}
               key={index}
-              className={`flex items-center gap-3 px-3 py-2 rounded-md cursor-pointer`}
+              className="flex items-center rounded-md cursor-pointer text-sm hover:underline font-medium"
             >
               <span>{item.label}</span>
             </Link>
           )}
-
         </div>
 
         <div className="hidden md:flex">
-          <a href="#contact-section" className="">
+          <a href="/contact" className="">
             <button
               className="py-2 px-6 text-sm font-semibold bg-primary text-primary-foreground rounded-2xl cursor-pointer overflow-hidden" >
 
               <span className="block transition-transform duration-300 transform hover:-translate-y-1">
-                Hover Me
+                Let's Chat
               </span>
             </button>
           </a>
@@ -130,6 +96,11 @@ const services: Service[] = [
 const Index = () => {
   return (
     <div className="bg-white text-black  min-h-screen" >
+      <Helmet>
+        <title>UnityAlgo - Services - ERP</title>
+      </Helmet>
+
+
       <div className='block md:hidden'>
         <Header />
       </div>
@@ -281,7 +252,7 @@ type Module = {
 const modules: Module[] = [
   {
     title: "Accounting",
-    icon: <DollarSign  />,
+    icon: <DollarSign />,
     points: [
       "General Ledger & Chart of Accounts",
       "Accounts Payable & Receivable",
@@ -292,7 +263,7 @@ const modules: Module[] = [
   },
   {
     title: "Stock",
-    icon: <Package  />,
+    icon: <Package />,
     points: [
       "Real-time Stock Tracking",
       "Warehouse Management",
@@ -303,7 +274,7 @@ const modules: Module[] = [
   },
   {
     title: "Sales & CRM",
-    icon: <ShoppingBag  />,
+    icon: <ShoppingBag />,
     points: [
       "Lead & Opportunity Management",
       "Sales Order Processing",
@@ -314,7 +285,7 @@ const modules: Module[] = [
   },
   {
     title: "Manufacturing",
-    icon: <Server  />,
+    icon: <Server />,
     points: [
       "Production Planning & Scheduling",
       "Bill of Materials (BOM)",
@@ -325,7 +296,7 @@ const modules: Module[] = [
   },
   {
     title: "Procurement",
-    icon: <ShoppingCart  />,
+    icon: <ShoppingCart />,
     points: [
       "Purchase Requisitions & Orders",
       "Supplier Management",
@@ -336,7 +307,7 @@ const modules: Module[] = [
   },
   {
     title: "Assets",
-    icon: <CircleDollarSign  />,
+    icon: <CircleDollarSign />,
     points: [
       "Asset Registration & Categorization",
       "Depreciation Tracking",
@@ -347,7 +318,7 @@ const modules: Module[] = [
   },
   {
     title: "Point of Sale",
-    icon: <Users  />,
+    icon: <Users />,
     points: [
       "Real-time Sales Processing",
       "Barcode & QR Code Scanning",
@@ -358,7 +329,7 @@ const modules: Module[] = [
   },
   {
     title: "Quality",
-    icon: <CheckCircle  />,
+    icon: <CheckCircle />,
     points: [
       "Quality Inspection & Testing",
       "Defect Tracking & Resolution",
@@ -369,7 +340,7 @@ const modules: Module[] = [
   },
   {
     title: "Support",
-    icon: <LifeBuoy  />,
+    icon: <LifeBuoy />,
     points: [
       "Customer Query Management",
       "Ticketing & Issue Tracking",
@@ -380,7 +351,7 @@ const modules: Module[] = [
   },
   {
     title: "HR & Payroll",
-    icon: <UserCheck  />,
+    icon: <UserCheck />,
     points: [
       "Employee Information Management",
       "Attendance & Leave Tracking",
@@ -392,8 +363,8 @@ const modules: Module[] = [
 ];
 
 const ERPModules: React.FC = () => {
-  const [showAll, setShowAll] = useState(false);
-  const displayedModules = showAll ? modules : modules.slice(0, 6);
+  // const [showAll, setShowAll] = useState(true);
+  const displayedModules = modules
 
   return (
     <section className="py-16 bg-white">
@@ -427,12 +398,12 @@ const ERPModules: React.FC = () => {
         </div>
 
         <div className="flex justify-center mt-8">
-          <button
+          {/* <button
             onClick={() => setShowAll(!showAll)}
             className="bg-primary hover:bg-primary/90 cursor-pointer text-white px-6 py-2 rounded-md font-semibold transition"
           >
             {showAll ? "Show Less" : "Show More"}
-          </button>
+          </button> */}
         </div>
       </div>
     </section>
