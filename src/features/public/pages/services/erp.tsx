@@ -99,9 +99,9 @@ const Header = () => {
           </a>
         </div>
 
-        {/* <div className="md:hidden">
+        <div className="md:hidden">
           <MenuBar />
-        </div> */}
+        </div>
       </div>
     </header>
   )
