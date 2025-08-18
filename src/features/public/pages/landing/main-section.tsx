@@ -18,6 +18,8 @@ const LandingSection = () => {
                     </motion.div>
                     <World />
                 </div>
+                <div className="block md:hidden h-[80vh] w-[80vh] absolute">
+                </div>
             </div>
         </div >
     )
