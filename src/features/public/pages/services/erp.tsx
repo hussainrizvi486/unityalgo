@@ -17,6 +17,7 @@ import {
 import { ContactSection } from '../landing/contact-section';
 import { BenefitSection } from './components/benefit';
 import { navItems } from '../../layout/header';
+import { MenuBar } from "../../layout/menu-bar";
 
 
 
@@ -39,9 +40,15 @@ const Header = () => {
 
             <Link to={item.url}
               key={index}
-              className="flex items-center rounded-md cursor-pointer text-sm hover:underline font-medium"
+              className="flex items-center gap-3 px-3 py-2 rounded-md cursor-pointer font-medium"
             >
-              <span>{item.label}</span>
+              {/* <span>{item.label}</span> */}
+              <div className="group inline-block">
+                <span className="relative cursor-pointer">
+                  {item.label}
+                  <span className="absolute left-0 -bottom-0.5 h-[2px] w-0 bg-blue-400 transition-all duration-300 ease-in-out group-hover:w-full"></span>
+                </span>
+              </div>
             </Link>
           )}
         </div>
@@ -58,9 +65,9 @@ const Header = () => {
           </a>
         </div>
 
-        {/* <div className="md:hidden">
+        <div className="md:hidden">
           <MenuBar />
-        </div> */}
+        </div>
       </div>
     </header>
   )

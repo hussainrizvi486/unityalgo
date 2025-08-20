@@ -18,7 +18,7 @@ const MenuBar: React.FC = () => {
         <Sheet>
 
             <SheetTrigger asChild >
-                <MenuIcon className="size-7" />
+                <MenuIcon className="size-6" />
             </SheetTrigger>
 
             <SheetContent side="top" className="bg-primary text-primary-foreground px-2 py-4 border-none shadow-none">
@@ -42,6 +42,12 @@ const MenuBar: React.FC = () => {
                                 <Link to={item.url} key={index} >
                                     <div className="text-sm mb-3 font-medium">
                                         {item.label}
+                                        {/* <div className="group inline-block">
+                                            <span className="relative cursor-pointer">
+                                                {item.label}
+                                                <span className="absolute left-0 -bottom-0.5 h-[2px] w-0 bg-blue-400 transition-all duration-300 ease-in-out group-active:w-full"></span>
+                                            </span>
+                                        </div> */}
                                     </div>
                                 </Link>
                             ))
